@@ -1,0 +1,234 @@
+/* pages/sell/sell.wxss */
+page {
+  height: 100vh;
+  overflow: hidden; /* 禁用滚动 */
+}
+
+/* 上方导航栏 */
+.nav-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 120rpx;
+  background-color: #fff;
+  padding: 0 30rpx;
+  border-bottom: 1px solid #ccc;
+}
+
+.left-section {
+  display: flex;
+	align-items: center;
+	width: 320rpx;
+}
+
+.back-arrow {
+  width: 80rpx;
+  height: 80rpx;
+	margin-right: 20rpx;
+
+}
+
+.title {
+  font-size: 48rpx;
+	font-weight: bold;
+	padding-right: 10rpx;
+}
+
+.publish-button {
+	display: flex;
+  align-items: center;
+	justify-content: center;
+	
+	width: 142rpx;
+	height: 94rpx;
+	border-radius: 70rpx;
+	background: rgba(255, 235, 59, 1);
+
+	font-size:40rpx;
+	font-weight: 700;
+	letter-spacing: 3rpx;
+	color: rgba(0, 0, 0, 1);
+	text-align:center;
+}
+
+.publish-button:active {
+  background-color: rgba(168, 132, 1, 0.637);
+  transform: translateY(2rpx);
+}
+
+
+/* 中间信息填写栏 */
+.product-description-page {
+	padding: 20rpx;
+	display: flex;
+	justify-content: center;
+}
+
+.description-section{
+	left: 36rpx;
+	top: 258rpx;
+	width: 682rpx;
+	height: 662rpx;
+	border-radius: 20rpx;
+	background: rgba(252, 253, 255, 1);
+	border: 2rpx solid rgba(0, 0, 0, 1);
+
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.description-textarea {
+	padding: 20rpx 32rpx;
+}
+
+.pleaseUpload{
+	font-size: 12px;
+	font-weight: 700;
+	color: rgb(175, 175, 175);
+	margin-left: 20rpx;
+	margin-bottom: 10rpx;
+}
+
+.wrapper {  
+	height: 300rpx;
+	border-top: 2rpx solid rgb(175, 175, 175);
+}  
+
+.upload-container {  
+  display: flex;   
+  flex-wrap: wrap; 
+	max-height: 100%;
+}
+
+.t-upload {  
+  flex: 0 0 33.3%; /* 每个子项占据1/3的宽度 */  
+  box-sizing: border-box;  
+	padding: 20rpx;  
+}  
+
+/* 下方价格等信息填写栏 */
+.price-shipping-section{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+
+	margin-top: 72rpx;
+}
+
+.price-section,.fahuo-section {
+	width: 684rpx;
+	height: 104rpx;
+	border-radius: 10rpx;
+	border: 2rpx solid rgba(0, 0, 0, 1);
+
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.price,.fahuo{
+	font-size: 32rpx;
+	font-weight: 700;
+	margin-left: 24rpx;
+}
+
+.price-input-section{
+	display: flex;
+	align-items: center;
+}
+
+.danwei{
+	font-size: 32rpx;
+	font-weight: 700;
+	color: rgba(224, 31, 31, 1);
+	margin-right: 5rpx;
+}
+
+.price-input{
+	width: 176rpx;
+	height: 58rpx;
+	font-size: 32rpx;
+	font-weight: 700;
+	color:rgba(224, 31, 31, 1);
+}
+
+.right-arrow{
+	width: 40rpx;
+	height: 40rpx;
+	margin-right: 20rpx;
+}
+
+/* 上拉选择发货方式界面 */
+.element-to-move {  
+  position: absolute;
+  bottom: -100%;
+  width: 97%;
+	height: 950rpx;
+
+	left: 50%;
+  transform: translateX(-50%);
+	
+	z-index: 100;
+	border-radius: 20rpx;
+	background: rgba(255, 253, 235, 1);
+	border: 1px solid rgba(0, 0, 0, 1);
+
+	animation: moveUp 1s forwards;
+	
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.element-to-move.active {  
+	animation: moveDown 1s forwards; 
+}  
+
+@keyframes moveUp {  
+  to {  
+    bottom: 3%; /* 移动到视口底部 */  
+  }  
+}
+
+@keyframes moveDown {  
+  from {
+    bottom: 3%;
+  }
+  to {
+    bottom: -100%;
+  }
+}
+
+.sheet-header1,.sheet-header2 {
+	font-size: 40rpx;
+	font-weight: 700;	
+	margin-top: 52rpx;
+	margin-bottom: 40rpx;
+}
+
+.choosexiaoqv,.choosefahuo{
+	gap: 30rpx;
+	font-size: 30rpx;
+	font-weight: 530;
+}
+
+.choosexiaoqv{
+	margin-bottom: 40rpx;
+	display: flex;
+	justify-content: space-between;
+}
+
+.choosefahuo{
+	display: flex;
+	flex-direction: column;
+}
+
+.confirm-button {
+	width: 532rpx;
+	height: 106rpx;
+	border-radius: 40rpx;
+	background: rgba(255, 235, 59, 1);
+	border: 1px solid rgba(0, 0, 0, 1);
+	margin-top:150rpx;
+} 
