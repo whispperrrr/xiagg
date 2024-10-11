@@ -231,4 +231,11 @@ page {
 	background: rgba(255, 235, 59, 1);
 	border: 1px solid rgba(0, 0, 0, 1);
 	margin-top:150rpx;
+	font-weight: 600;
+	font-size: 40rpx;
 } 
+
+.confirm-button:active{
+	background-color: rgba(168, 132, 1, 0.637);
+  transform: translateY(2rpx);
+}

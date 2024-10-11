@@ -19,7 +19,7 @@
 
   <!-- 商品描述区域 -->
   <view class="description-section">
-    <textarea class="description-textarea" placeholder="描述一下宝贝的品牌型号、货品来源.." placeholder-style="font-size:24rpx;" />
+    <textarea class="description-textarea" placeholder="描述一下宝贝的品牌型号、货品来源.." placeholder-style="font-size:24rpx;" bindinput="onDescriptionInput" />
 		
 		<!-- 图片上传区域 -->
     <view class="pleaseUpload">添加优质图片，更吸引人~</view>
@@ -49,7 +49,7 @@
 		<view class="price">价格</view>
     <view class="price-input-section">
       <view class="danwei">¥</view>
-      <input type="number" class="price-input" placeholder="0.00" placeholder-style="color:red;" style="caret-color:red;"/>
+      <input type="number" class="price-input" placeholder="0.00" placeholder-style="color:red;" style="caret-color:red;" bindinput="onPriceInput"/>
     </view>
 	</view>
 
@@ -64,14 +64,14 @@
 <view class="element-to-move {{isMovableVisible ? '' : 'active'}}">
   
   <view class="sheet-header1">校区</view>
-  <radio-group class="choosexiaoqv">
+  <radio-group class="choosexiaoqv" bindchange="onCampusChange">
     <label><radio value="checkbox1"/>思明</label>
     <label><radio value="checkbox2"/>翔安</label>
     <label><radio value="checkbox3"/>漳州</label>
   </radio-group>
 
   <view class="sheet-header2">发货方式</view>
-  <radio-group class="choosefahuo">
+  <radio-group class="choosefahuo" bindchange="onShippingMethodChange">
     <label><radio value="checkbox1"/>卖家送至买家指定地点</label>
     <label><radio value="checkbox2"/>买家自取</label>
   </radio-group>
