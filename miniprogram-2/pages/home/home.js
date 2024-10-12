@@ -27,7 +27,7 @@ Page({
       url: '/pages/goods/search/index',
     })
   },
-
+  
   goodListPagination: {
     index: 0,
     num: 20,
