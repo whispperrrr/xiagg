@@ -1,58 +1,64 @@
+<!-- 下拉触底加载 -->
 <view style="text-align: center; color: #b9b9b9" wx:if="{{pageLoading}}">
   <t-loading theme="circular" size="40rpx" text="加载中..." inherit-color />
 </view>
+
+
 <view class="home-page-header">
-  <view class="search" bind:tap="navToSearchPage">
-    <t-search
-      t-class-input="t-search__input"
-      t-class-input-container="t-search__input-container"
-      placeholder="iphone 13 火热发售中"
-      leftIcon=""
-      disabled
-    >
-      <t-icon slot="left-icon" prefix="wr" name="search" size="40rpx" color="#bbb" />
-    </t-search>
-  </view>
-  <view class="swiper-wrap">
-    <t-swiper
-      wx:if="{{imgSrcs.length > 0}}"
-      current="{{current}}"
-      autoplay="{{autoplay}}"
-      duration="{{duration}}"
-      interval="{{interval}}"
-      navigation="{{navigation}}"
-      imageProps="{{swiperImageProps}}"
-      list="{{imgSrcs}}"
-      bind:click="navToActivityDetail"
-    />
-  </view>
-</view>
-<view class="home-page-container">
-  <view class="home-page-tabs">
-    <t-tabs
-      t-class="t-tabs"
-      t-class-active="tabs-external__active"
-      t-class-item="tabs-external__item"
-      defaultValue="{{0}}"
-      space-evenly="{{false}}"
-      bind:change="tabChangeHandle"
-    >
-      <t-tab-panel
-        wx:for="{{tabList}}"
-        wx:for-index="index"
-        wx:key="index"
-        label="{{item.text}}"
-        value="{{item.key}}"
-      />
-    </t-tabs>
+
+  <!-- 导航栏 -->
+  <t-sticky offset-top="0">
+    <view class="header-section">
+      <view class="left-section">
+        <image src="/images1/image_home/本地.png" class="position-icon" />
+        <picker bindchange="bindPickerChange" value="{{index}}" range="{{regions}}">
+           <view class="picker">当前选择：{{regions[index]}}</view>
+          </picker>
+       </view>
+
+      <button class="right-button" bind:tap="gotoSearch">
+        <image src="/images1/image_home/搜索@3x.png" class="search-icon" />
+      </button>
+    </view>
+  </t-sticky>
+ 
+
+  <!-- 轮播图 -->
+  <view class="swiper-section">
+    <swiper indicator-dots autoplay	circular interval="5000" duration="500" 	indicator-active-color='#fff' class="swiper">
+      <swiper-item>
+        <image src="/images1/image_home/矩形 7@3x.png" class="swiper-image"></image>
+      </swiper-item>
+      <swiper-item>
+        <image src="/images1/image_home/矩形 6@3x.png" class="swiper-image"></image>
+      </swiper-item>
+      <swiper-item>
+        <image src="/images1/image_home/矩形 5@3x.png" class="swiper-image"></image>
+      </swiper-item>
+      <swiper-item>
+        <image src="/images1/image_home/矩形 1@3x.png" class="swiper-image"></image>
+      </swiper-item>
+      <swiper-item>
+        <image src="/images1/image_home/矩形 3@3x.png" class="swiper-image"></image>
+      </swiper-item>
+    </swiper>
   </view>
 
+</view>
+
+
+
+<view class="home-page-container">
+
+  <!-- 商品列表 -->
   <goods-list
     wr-class="goods-list-container"
     goodsList="{{goodsList}}"
     bind:click="goodListClickHandle"
     bind:addcart="goodListAddCartHandle"
   />
+  
   <load-more list-is-empty="{{!goodsList.length}}" status="{{goodsListLoadStatus}}" bind:retry="onReTry" />
   <t-toast id="t-toast" />
+
 </view>

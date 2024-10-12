@@ -1,10 +1,10 @@
-<view
-  id="{{independentID}}"
-  class="goods-card"
-  bind:tap="clickHandle"
-  data-goods="{{ goods }}"
->
+<!-- 商品卡片 -->
+<view id="{{independentID}}" class="goods-card" bind:tap="clickHandle" data-goods="{{ goods }}">
+
+	<!-- 商品主要信息 -->
 	<view class="goods-card__main">
+
+		<!-- 商品缩略图 -->
 		<view class="goods-card__thumb" bind:tap="clickThumbHandle">
 			<t-image
 			  wx:if="{{ !!goods.thumb }}"
@@ -14,23 +14,18 @@
 			  lazy-load
 			/>
 		</view>
+
+		<!-- 商品主体内容 -->
 		<view class="goods-card__body">
+
+			<!-- 商品标题 -->
 			<view class="goods-card__upper">
 				<view wx:if="{{ goods.title }}" class="goods-card__title">
 					{{ goods.title }}
 				</view>
-				<view wx:if="{{ goods.tags && !!goods.tags.length }}" class="goods-card__tags">
-					<view
-					  wx:for="{{ goods.tags }}"
-					  wx:key="index"
-					  wx:for-item="tag"
-					  class="goods-card__tag"
-					  data-index="{{index}}"
-					>
-						{{tag}}
-					</view>
-				</view>
 			</view>
+
+			<!-- 商品价格 -->
 			<view class="goods-card__down">
 				<price
 				  wx:if="{{ goods.price }}"
@@ -39,25 +34,11 @@
 				  symbol="{{currency}}"
 				  price="{{goods.price}}"
 				/>
-				<price
-				  wx:if="{{ goods.originPrice && isValidityLinePrice }}"
-				  wr-class="goods-card__origin-price"
-				  symbol="{{currency}}"
-				  price="{{goods.originPrice}}"
-				  type="delthrough"
-				/>
-				<t-icon
-				  class="goods-card__add-cart"
-				  prefix="wr"
-				  name="cartAdd"
-				  id="{{independentID}}-cart"
-				  data-id="{{independentID}}"
-				  catchtap="addCartHandle"
-				  size="48rpx"
-				  color="#FA550F"
-				/>
 			</view>
+
 		</view>
+
 	</view>
+
 </view>
 

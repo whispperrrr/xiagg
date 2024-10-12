@@ -4,17 +4,28 @@ import Toast from 'tdesign-miniprogram/toast/index';
 
 Page({
   data: {
-    imgSrcs: [],
-    tabList: [],
     goodsList: [],
     goodsListLoadStatus: 0,
     pageLoading: false,
     current: 1,
-    autoplay: true,
-    duration: '500',
-    interval: 5000,
-    navigation: { type: 'dots' },
-    swiperImageProps: { mode: 'scaleToFill' },
+
+    //校区选择
+    index: 0,
+    regions: ['思明', '翔安', '漳州'],
+  },
+
+  //校区选择
+  bindPickerChange: function(e) {
+    this.setData({
+      index: e.detail.value
+    });
+  },
+
+  //跳转到搜索页
+  gotoSearch(){
+    wx.navigateTo({
+      url: '/pages/goods/search/index',
+    })
   },
 
   goodListPagination: {

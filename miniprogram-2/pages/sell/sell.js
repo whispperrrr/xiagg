@@ -16,7 +16,7 @@ Page({
       count: 1,
     },
 
-    //上拉页面
+    //上拉页面是否显示
     isMovableVisible: false,
 
     //发布数据
@@ -96,6 +96,14 @@ Page({
       },
       success: (res) => {
         console.log('数据上传成功', res);
+        wx.showToast({
+          title: '发布成功',
+          icon:'success',
+          duration: 2000
+        })
+        wx.navigateTo({
+          url: '#', //****跳转到首页
+        })
       },
       fail: (err) => {
         console.error('数据上传失败', err);
@@ -178,7 +186,13 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow() {
-
+    this.setData({
+      descriptionTextarea: '',
+      priceInput: '',
+      selectedCampus: '',
+      selectedShippingMethod: '',
+      originFiles: [],
+    });
   },
 
   /**
