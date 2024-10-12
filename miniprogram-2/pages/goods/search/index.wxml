@@ -1,24 +1,32 @@
 <view class="search-page">
-  <t-search
-    t-class-input-container="t-class__input-container"
-    t-class-input="t-search__input"
-    value="{{searchValue}}"
-    leftIcon=""
-    placeholder="iPhone12pro"
-    bind:submit="handleSubmit"
-    focus
-  >
-    <t-icon slot="left-icon" prefix="wr" name="search" size="40rpx" color="#bbb" />
-  </t-search>
+
+  <view class="search-section">
+    <t-search
+      t-class-input-container="t-class__input-container"
+      t-class-input="t-search__input"
+      value="{{searchValue}}"
+      leftIcon=""
+      placeholder="运动鞋"
+      bind:submit="handleSubmit"
+      focus
+    ></t-search>
+    
+    <button class="search-button" bind:submit="handleSubmit">
+      <image src="/images1/image_home/搜索@3x.png" class="search-icon" />
+    </button>
+  </view>
+
   <view class="search-wrap">
+
     <view class="history-wrap">
       <view class="search-header">
         <text class="search-title">历史搜索</text>
         <text class="search-clear" bind:tap="handleClearHistory">清除</text>
       </view>
+
       <view class="search-content">
         <view
-          class="search-item"
+          class="search-item-history"
           hover-class="hover-history-item"
           wx:for="{{historyWords}}"
           bind:tap="handleHistoryTap"
@@ -30,14 +38,15 @@
         </view>
       </view>
     </view>
+
     <view class="popular-wrap">
       <view class="search-header">
         <text class="search-title">热门搜索</text>
       </view>
       <view class="search-content">
         <view
-          class="search-item"
-          hover-class="hover-history-item"
+          class="search-item-hot"
+          hover-class="hover-hot-item"
           wx:for="{{popularWords}}"
           bind:tap="handleHistoryTap"
           data-index="{{index}}"
@@ -47,7 +56,9 @@
         </view>
       </view>
     </view>
+
   </view>
+
   <t-dialog
     visible="{{dialogShow}}"
     content="{{dialog.message}}"
@@ -58,4 +69,5 @@
     t-class-confirm="dialog__button-confirm"
     t-class-cancel="dialog__button-cancel"
   />
+
 </view>

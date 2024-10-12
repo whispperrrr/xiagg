@@ -6,7 +6,8 @@ page {
 /* 上方导航栏 */
 .header-section{
   display:flex;
-  align-items:stretch;
+  align-items: center;
+  justify-content: center;
   height: 80rpx;
   background-color: #fff;
 }
