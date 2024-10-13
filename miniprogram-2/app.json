@@ -29,12 +29,11 @@
     "pages/order/delivery-detail/index",
     "pages/order/invoice/index",
     "pages/usercenter/name-edit/index",
-    "pages/sell/sell"
+    "pages/sell/sell",
+    "pages/newmessages/newmessages"
   ],
   "tabBar": {
     "custom": true,
-    "color": "#666666",
-    "selectedColor": "#FF5F15",
     "backgroundColor": "#ffffff",
     "borderStyle": "black",
     "list": [
@@ -49,6 +48,10 @@
       {
         "pagePath": "pages/cart/index",
         "text": "购物车"
+      },
+      {
+        "pagePath": "pages/newmessages/newmessages",
+        "text": "信息"
       },
       {
         "pagePath": "pages/usercenter/index",
