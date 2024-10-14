@@ -6,11 +6,6 @@ page {
   display: block;
 }
 
-.goods-list-container .t-search {
-  padding: 0 30rpx;
-  background-color: #fff;
-}
-
 .goods-list-container .t-class__input-container {
   height: 64rpx !important;
   border-radius: 32rpx !important;
@@ -19,11 +14,6 @@ page {
 .goods-list-container .t-search__left-icon {
   display: flex;
   align-items: center;
-}
-
-.goods-list-container .t-search__input {
-  font-size: 28rpx !important;
-  color: rgb(116, 116, 116) !important;
 }
 
 .goods-list-container .category-goods-list {

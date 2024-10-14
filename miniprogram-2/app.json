@@ -46,6 +46,10 @@
         "text": "分类"
       },
       {
+        "pagePath": "pages/sell/sell",
+        "text": "卖"
+      },
+      {
         "pagePath": "pages/cart/index",
         "text": "购物车"
       },

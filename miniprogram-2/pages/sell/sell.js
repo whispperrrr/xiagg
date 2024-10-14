@@ -26,9 +26,11 @@ Page({
     selectedShippingMethod: ''
   },
 
-  //返回上一页
+  //返回首页
   goBack() {
-    wx.navigateBack();
+    wx.switchTab({
+      url: '/pages/home/home',
+    })
   },
 
   //发布商品

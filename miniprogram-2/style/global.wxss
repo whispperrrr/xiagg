@@ -6,6 +6,7 @@
  * @Description: 
  * @FilePath: /retail-mp/style/global.wxss
  */
+ 
 .text-primary {
   color: #fa550f;
 }

@@ -31,9 +31,7 @@
       <view class="goods-title">
         <view class="goods-name">{{details.title}}</view>
       </view>
-
-      <view class="goods-intro">{{intro}}</view>
-
+      
     </view>
 
     <!-- 评价 -->
@@ -105,5 +103,3 @@
   </view>
 
 </view>
-
-<t-toast id="t-toast" />
