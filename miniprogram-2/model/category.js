@@ -15,7 +15,7 @@ export function getCategoryList(){
             },
             {
               groupId: '249480',
-              name: '植物收纳',
+              name: '置物收纳',
               thumbnail:'/images1/image_categories/置物收纳.png',
             }
           ],

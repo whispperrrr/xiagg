@@ -33,7 +33,6 @@ Page({
       middleCount: 0,
     },
     isShowPromotionPop: false,
-    activityList: [],
     recLeftImg,
     recRightImg,
     details: {},
@@ -49,19 +48,6 @@ Page({
     ],
     storeLogo: `${imgPrefix}common/store-logo.png`,
     storeName: '云mall标准版旗舰店',
-    jumpArray: [
-      {
-        title: '首页',
-        url: '/pages/home/home',
-        iconName: 'home',
-      },
-      {
-        title: '购物车',
-        url: '/pages/cart/index',
-        iconName: 'cart',
-        showCartNum: true,
-      },
-    ],
     isStock: true,
     cartNum: 0,
     soldout: false,
@@ -77,7 +63,7 @@ Page({
     outOperateStatus: false, // 是否外层加入购物车
     operateType: 0,
     selectSkuSellsPrice: 0,
-    maxLinePrice: 0,
+
     minSalePrice: 0,
     maxSalePrice: 0,
     list: [],
@@ -87,7 +73,6 @@ Page({
     autoplay: true,
     duration: 500,
     interval: 5000,
-    soldNum: 0, // 已售数量
   },
 
   handlePopupHide() {
@@ -298,12 +283,6 @@ Page({
     const { index } = e.detail;
     wx.navigateTo({
       url: `/pages/promotion-detail/index?promotion_id=${index}`,
-    });
-  },
-
-  showPromotionPopup() {
-    this.setData({
-      isShowPromotionPop: true,
     });
   },
 

@@ -43,6 +43,18 @@ Component({
   },
 
   methods: {
+    gotoHome(){
+      wx.switchTab({
+        url: '/pages/home/home',
+      })
+    },
+
+    gotoWishlist(){
+      wx.navigateTo({
+        url: '#', //**
+      })
+    },
+
     toAddCart() {
       const { isStock } = this.properties;
       if (!isStock) return;
