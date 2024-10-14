@@ -1,0 +1,4 @@
+<view class="container">
+  <text>这里是消息页面</text>
+  <!-- 可以添加消息列表等内容 -->
+</view>

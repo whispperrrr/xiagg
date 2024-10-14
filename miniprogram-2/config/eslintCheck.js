@@ -4,11 +4,17 @@
  * @date 2019.9.4
  * @author 310227663@qq.com
  */
-const { exec } = require('child_process');
+const {
+  exec
+} = require('child_process');
 const chalk = require('chalk');
-const { CLIEngine } = require('eslint');
+const {
+  CLIEngine
+} = require('eslint');
 const cli = new CLIEngine({});
-const { log } = console;
+const {
+  log
+} = console;
 
 function getErrorLevel(number) {
   switch (number) {
@@ -27,7 +33,9 @@ exec(
     if (stdout.length) {
       const array = stdout.split('\n');
       array.pop();
-      const { results } = cli.executeOnFiles(array);
+      const {
+        results
+      } = cli.executeOnFiles(array);
       let errorCount = 0;
       let warningCount = 0;
       results.forEach((result) => {
@@ -80,8 +88,7 @@ exec(
           chalk.yellow(warningCount) +
           ' warnings) \0',
         );
-      }
-      !pass && log(chalk.green.bold('~~ Done: 代码检验通过，提交成功 ~~'));
+      }!pass && log(chalk.green.bold('~~ Done: 代码检验通过，提交成功 ~~'));
       process.exit(pass);
     }
     if (error !== null) {
