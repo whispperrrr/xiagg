@@ -1,16 +1,20 @@
 <view class="goods-list-container">
 
+  <t-sticky offset-top="0">
+    <view class="goodlist-search-section">
+      <image class="back-arrow" src="/images1/image_sell/icon_arrow_back_black (1).png" bindtap="goback"></image>
+      <view class="sousuokuang">
+        <t-search t-class-input-container="t-class__input-container-goodlist"  t-class-input="t-search__input-goodlist" value="{{searchValue}}" leftIcon="/images1/image_home/搜索@3x.png" placeholder="运动鞋" bind:submit="handleSubmit" focus></t-search>
+      </view>
+    </view>
+  </t-sticky>
+
   <view class="empty-wrap" wx:if="{{goodsList.length === 0 && hasLoaded}}">
     <t-empty t-class="empty-tips" size="240rpx" description="暂无相关商品" />
   </view>
 
   <view class="category-goods-list" wx:if="{{goodsList.length}}">
-    <goods-list
-      wr-class="wr-goods-list"
-      goodsList="{{goodsList}}"
-      bind:click="gotoGoodsDetail"
-      bind:addcart="handleAddCart"
-    />
+    <goods-list wr-class="wr-goods-list" goodsList="{{goodsList}}" bind:click="gotoGoodsDetail" bind:addcart="handleAddCart" />
   </view>
 
   <load-more wx:if="{{goodsList.length > 0}}" status="{{loadMoreStatus}}" no-more-text="没有更多了" />

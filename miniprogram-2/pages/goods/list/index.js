@@ -26,6 +26,12 @@ Page({
   pageSize: 30,
   total: 0,
 
+  goback:function(){
+    wx.navigateBack({
+      delta:1
+    });
+  },
+
   handleFilterChange(e) {
     const { layout, overall, sorts } = e.detail;
     this.pageNum = 1;
