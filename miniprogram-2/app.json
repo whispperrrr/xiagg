@@ -10,7 +10,6 @@
     "pages/goods/category/index",
     "pages/goods/search/index",
     "pages/goods/result/index",
-    "pages/cart/index",
     "pages/order/order-confirm/index",
     "pages/order/receipt/index",
     "pages/order/pay-result/index",
@@ -48,10 +47,6 @@
       {
         "pagePath": "pages/sell/sell",
         "text": "卖"
-      },
-      {
-        "pagePath": "pages/cart/index",
-        "text": "购物车"
       },
       {
         "pagePath": "pages/newmessages/newmessages",

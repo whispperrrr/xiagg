@@ -1,8 +1,82 @@
+/* 全局容器 */
 .container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  background-color: #F5F5F5;
+}
+
+/* 页面标题样式 */
+.header {
+  padding: 20rpx;
+  font-size: 36rpx;
+  text-align: left;
+  font-weight: bold;
+}
+
+/* 消息项样式 */
+.message-item {
+  display: flex;
+  align-items: center;
+  padding: 20rpx;
+  background-color: #FFFFFF;
+  margin-bottom: 10rpx;
+}
+
+.message-icon {
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 50%;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
-  /* 使内容垂直居中 */
-  font-size: 20px;
+}
+
+.icon {
+  width: 50rpx;
+  height: 50rpx;
+}
+
+.avatar {
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 50%;
+}
+
+.message-content {
+  margin-left: 20rpx;
+}
+
+.message-title {
+  font-size: 32rpx;
+  font-weight: bold;
+}
+
+.message-detail {
+  font-size: 28rpx;
+  color: #888;
+}
+
+/* 底部导航栏 */
+.tabbar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100rpx;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: #FFFFFF;
+  border-top: 1px solid #EAEAEA;
+}
+
+.tabbar-item {
+  font-size: 28rpx;
+  text-align: center;
+  flex: 1;
+}
+
+.active {
+  color: #FFD700;
 }
