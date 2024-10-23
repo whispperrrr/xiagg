@@ -10,21 +10,20 @@
   padding: 0;
   background: transparent;
   width: 342rpx;
-  
-  border: 1rpx solid rgb(189, 189, 189);
-  border-radius: 0 0 20rpx 20rpx;
 
   align-items: center;
   justify-content: center;
-  margin-bottom: 16rpx;
+  margin-bottom: 35rpx;
   flex-direction: column;
 }
 
 .goods-card__thumb {
   flex-shrink: 0;
   position: relative;
-  width: 340rpx;
-  height: 340rpx;
+  width: 310rpx;
+  height: 270rpx;
+  border-radius: 20rpx;
+  overflow: hidden;
 }
 
 .goods-card__thumb:empty {
@@ -45,9 +44,8 @@
   display: flex;
   flex: 1 1 auto;
   background: #fff;
-  padding: 16rpx 24rpx 18rpx;
+  padding: 20rpx 0 0 0;
   flex-direction: column;
-  border-radius: 0 0 20rpx 20rpx;
 }
 
 /* 标题 */
@@ -56,13 +54,15 @@
   flex-direction: column;
   overflow: hidden;
   flex: 1 1 auto;
+  width: 284rpx;
 }
 
 .goods-card__title {
   flex-shrink: 0;
-  font-size: 28rpx;
+  font-size: 24rpx;
   color: #333;
   font-weight: 400;
+  line-height: 35rpx;
 
   display: -webkit-box;
   height: 72rpx;

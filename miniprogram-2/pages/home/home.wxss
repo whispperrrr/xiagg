@@ -61,8 +61,15 @@ page {
 }
 
 /* 轮播图 */
+.swiper-section{
+  display: flex;
+  justify-content: center;
+  margin-top: 20rpx;
+}
+
 .swiper {
   height: 280rpx;
+  width: 670rpx;
 }
 
 .swiper-image{
@@ -79,5 +86,5 @@ page {
 }
 
 .home-page-container .goods-list-container {
-  margin-top: 16rpx;
+  margin-top: 36rpx;
 }

@@ -6,10 +6,10 @@
     <t-swiper
       wx:if="{{details.images.length > 0}}"
       height="750rpx"
-      current="{{current}}"
-      autoplay="{{autoplay}}"
-      duration="{{duration}}"
-      interval="{{interval}}"
+      current="0"
+      autoplay
+      duration="500"
+      interval="5000"
       navigation="{{navigation}}"
       list="{{details.images}}"
     ></t-swiper>
