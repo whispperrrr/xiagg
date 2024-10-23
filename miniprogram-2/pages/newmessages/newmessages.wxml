@@ -9,27 +9,4 @@
       <text class="message-detail">暂无通知消息</text>
     </view>
   </view>
-
-  <!-- 互动消息 -->
-  <view class="message-item">
-    <view class="message-icon" style="background-color: #FFA07A;">
-      <image src="/assets/interaction.png" class="icon"></image>
-    </view>
-    <view class="message-content">
-      <text class="message-title">互动消息</text>
-      <text class="message-detail">暂无互动消息</text>
-    </view>
-  </view>
-
-  <!-- 私信消息 -->
-  <view class="message-item">
-    <view class="message-icon">
-      <image src="/assets/avatar.png" class="avatar"></image>
-    </view>
-    <view class="message-content">
-      <text class="message-title">甜甜</text>
-      <text class="message-detail">还有剩余的小米手机没？</text>
-    </view>
-  </view>
-
 </view>
