@@ -12,7 +12,6 @@ function mockFetchGoodsList(pageIndex = 1, pageSize = 20) {
         title: item.title,
         price: item.minSalePrice,
         originPrice: item.maxLinePrice,
-        tags: item.spuTagList.map((tag) => tag.title),
       };
     }),
   );

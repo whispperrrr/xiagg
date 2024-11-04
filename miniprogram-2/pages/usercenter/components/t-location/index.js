@@ -106,19 +106,5 @@ Component({
       const currentRoutes = getCurrentPages().map((v) => v.route);
       return currentRoutes.indexOf(pageRouteUrl);
     },
-
-    async onHandleSubmit(params) {
-      try {
-        const orderPageDeltaNum = this.findPage('pages/order/order-confirm/index');
-        if (orderPageDeltaNum > -1) {
-          wx.navigateBack({ delta: 1 });
-          resolveAddress(params);
-          return;
-        }
-      } catch (err) {
-        rejectAddress(params);
-        console.error(err);
-      }
-    },
   },
 });

@@ -193,20 +193,6 @@ Page({
     }
   },
 
-  jumpNav(e) {
-    const status = e.detail.tabType;
-
-    if (status === 0) {
-      wx.navigateTo({ url: '/pages/order/after-service-list/index' });
-    } else {
-      wx.navigateTo({ url: `/pages/order/order-list/index?status=${status}` });
-    }
-  },
-
-  jumpAllOrder() {
-    wx.navigateTo({ url: '/pages/order/order-list/index' });
-  },
-
   openMakePhone() {
     this.setData({ showMakePhone: true });
   },

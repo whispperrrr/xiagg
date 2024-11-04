@@ -57,14 +57,6 @@ page {
   align-items: center;
 }
 
-.goods-list-container .category-goods-list {
-  background-color: #f2f2f2;
-  overflow-y: scroll;
-  -webkit-overflow-scrolling: touch;
-  padding: 20rpx 24rpx;
-  -webkit-overflow-scrolling: touch;
-}
-
 .goods-list-container .wr-goods-list {
   background: #f2f2f2 !important;
 }
@@ -127,4 +119,14 @@ page {
 
 .goods-list-container .price-ipts-wrap .price-ipt {
   border-radius: 8rpx;
+}
+
+/* 商品列表 */
+.list-page-container{
+  display: block;
+  padding: 0 24rpx;
+}
+
+.list-page-container .goods-list-container {
+  margin-top: 36rpx;
 }

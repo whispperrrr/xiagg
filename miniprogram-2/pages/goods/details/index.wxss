@@ -148,7 +148,7 @@ page {
   padding-bottom: 120rpx;
 }
 
-.goods-detail-page .desc-content__title {
+.goods-detail-page .desc-content__title { 
   font-size: 28rpx;
   line-height: 36rpx;
   text-align: center;

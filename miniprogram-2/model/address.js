@@ -1,7 +1,6 @@
 /** 地址 */
 export function genAddress(id) {
   return {
-    saasId: '88888888',
     uid: `8888888820550${id}`,
     authToken: null,
     id: `${id}`,

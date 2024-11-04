@@ -15,7 +15,6 @@ export function getGoodsAllComments(params) {
       pageList: [
         {
           spuId: '1722045',
-          skuId: '0',
           specInfo: '',
           commentContent:
             '收到货了，第一时间试了一下，很漂亮特别喜欢，大爱大爱，颜色也很好看。棒棒!',
@@ -57,7 +56,6 @@ export function getGoodsAllComments(params) {
         },
         {
           spuId: '1722045',
-          skuId: '0',
           specInfo: '',
           commentContent:
             '收到货了，第一时间试了一下，很漂亮特别喜欢，大爱大爱，颜色也很好看。棒棒!',
@@ -81,7 +79,6 @@ export function getGoodsAllComments(params) {
         },
         {
           spuId: '1722045',
-          skuId: '0',
           specInfo: '',
           commentContent:
             '收到货了，第一时间试了一下，很漂亮特别喜欢，大爱大爱，颜色也很好看。棒棒!',
@@ -111,7 +108,6 @@ export function getGoodsAllComments(params) {
         },
         {
           spuId: '1722045',
-          skuId: '0',
           specInfo: '',
           commentContent:
             '收到货了，第一时间试了一下，很漂亮特别喜欢，大爱大爱，颜色也很好看。棒棒!',
@@ -155,7 +151,6 @@ export function getGoodsAllComments(params) {
     pageList: [
       {
         spuId: '1722045',
-        skuId: '1697694',
         specInfo: '很不错',
         commentContent:
           '收到货了，第一时间试了一下，很漂亮特别喜欢，大爱大爱，颜色也很好看。棒棒!',
@@ -174,7 +169,6 @@ export function getGoodsAllComments(params) {
       },
       {
         spuId: '1722045',
-        skuId: '1697693',
         specInfo: '很适合',
         commentContent:
           '收到货了，第一时间试了一下，很漂亮特别喜欢，大爱大爱，颜色也很好看。棒棒!',
@@ -193,7 +187,6 @@ export function getGoodsAllComments(params) {
       },
       {
         spuId: '1722045',
-        skuId: '1697694',
         specInfo: 'NICE',
         commentContent:
           '收到货了，第一时间试了一下，很漂亮特别喜欢，大爱大爱，颜色也很好看。棒棒!',
@@ -211,7 +204,6 @@ export function getGoodsAllComments(params) {
       },
       {
         spuId: '1722045',
-        skuId: '0',
         specInfo: '',
         commentContent:
           '收到货了，第一时间试了一下，很漂亮特别喜欢，大爱大爱，颜色也很好看。棒棒!',
@@ -228,7 +220,6 @@ export function getGoodsAllComments(params) {
       },
       {
         spuId: '1722045',
-        skuId: '1697694',
         specInfo: '测试dr超长:dr专用超长;bwtgg01:fff',
         commentContent:
           '收到货了，第一时间试了一下，很漂亮特别喜欢，大爱大爱，颜色也很好看。棒棒!',
@@ -244,7 +235,6 @@ export function getGoodsAllComments(params) {
       },
       {
         spuId: '1722045',
-        skuId: '1697693',
         specInfo: '测试dr超长:超长测试超长测试1;bwtgg01:bbb',
         commentContent:
           '收到货了，第一时间试了一下，很漂亮特别喜欢，大爱大爱，颜色也很好看。棒棒!',
@@ -260,7 +250,6 @@ export function getGoodsAllComments(params) {
       },
       {
         spuId: '1722045',
-        skuId: '1697694',
         specInfo: '测试dr超长:dr专用超长;bwtgg01:fff',
         commentContent:
           '收到货了，第一时间试了一下，很漂亮特别喜欢，大爱大爱，颜色也很好看。棒棒!',
@@ -276,7 +265,6 @@ export function getGoodsAllComments(params) {
       },
       {
         spuId: '1722045',
-        skuId: '1697694',
         specInfo: '测试dr超长:dr专用超长;bwtgg01:fff',
         commentContent:
           '收到货了，第一时间试了一下，很漂亮特别喜欢，大爱大爱，颜色也很好看。棒棒!',
@@ -292,7 +280,6 @@ export function getGoodsAllComments(params) {
       },
       {
         spuId: '1722045',
-        skuId: '1697694',
         specInfo: '测试dr超长:dr专用超长;bwtgg01:fff',
         commentContent:
           '收到货了，第一时间试了一下，很漂亮特别喜欢，大爱大爱，颜色也很好看。棒棒!',
@@ -308,7 +295,6 @@ export function getGoodsAllComments(params) {
       },
       {
         spuId: '1722045',
-        skuId: '1697694',
         specInfo: '测试dr超长:dr专用超长;bwtgg01:fff',
         commentContent: '',
         commentImageUrls: null,

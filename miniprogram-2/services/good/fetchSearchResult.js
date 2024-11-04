@@ -15,11 +15,6 @@ function mockSearchResult(params) {
       item.title = item.title;
       item.price = item.minSalePrice;
       item.originPrice = item.maxLinePrice;
-      if (item.spuTagList) {
-        item.tags = item.spuTagList.map((tag) => ({ title: tag.title }));
-      } else {
-        item.tags = [];
-      }
     });
   }
   return delay().then(() => {

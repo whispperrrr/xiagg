@@ -16,7 +16,7 @@
 	</view>
 
 	<view class="buy-buttons">
-		<view class="bar-separately {{soldout || !isStock ? 'bar-addCart-disabled' :''}}" bindtap="toAddCart">加入心愿单</view>
+		<view class="bar-separately {{soldout || !isStock ? 'bar-addWishList-disabled' :''}}" bindtap="toAddWishList">加入心愿单</view>
 		<view class="bar-buy {{soldout || !isStock ? 'bar-buyNow-disabled' : ''}}" bindtap="toBuyNow">私信商家购买</view>
 	</view>
 

@@ -76,8 +76,6 @@ export function getCategoryList(){
     {
       groupId: '24948',
       name: '数码',
-      thumbnail:
-        'https://cdn-we-retail.ym.tencent.com/miniapp/category/category-default.png',
       children: [
         {
           groupId: '249481',

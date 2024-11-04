@@ -3,7 +3,6 @@ export function getGoodsDetailsComments() {
     homePageComments: [
       {
         spuId: '1722045',
-        skuId: null,
         specInfo: null,
         commentContent:
           '收到货了，第一时间试了一下，很漂亮特别喜欢，大爱大爱，颜色也很好看。棒棒!',

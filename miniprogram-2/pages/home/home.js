@@ -29,8 +29,8 @@ Page({
   },
   
   goodListPagination: {
-    index: 0,
     num: 20,
+    index: 0,
   },
 
   privateData: {
@@ -85,7 +85,7 @@ Page({
   },
 
   async loadGoodsList(fresh = false) {
-    if (fresh) {
+    if (fresh) { //将页面滚动到顶部，并重置页码为0
       wx.pageScrollTo({
         scrollTop: 0,
       });

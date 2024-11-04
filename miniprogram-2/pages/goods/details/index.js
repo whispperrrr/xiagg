@@ -1,6 +1,5 @@
 import Toast from 'tdesign-miniprogram/toast/index';
 import { fetchGood } from '../../../services/good/fetchGood';
-import { fetchActivityList } from '../../../services/activity/fetchActivityList';
 import {
   getGoodsDetailsCommentList,
   getGoodsDetailsCommentsCount,
@@ -32,7 +31,6 @@ Page({
       hasImageCount: 0,
       middleCount: 0,
     },
-    isShowPromotionPop: false,
     recLeftImg,
     recRightImg,
     details: {},
@@ -49,20 +47,15 @@ Page({
     storeLogo: `${imgPrefix}common/store-logo.png`,
     storeName: '云mall标准版旗舰店',
     isStock: true,
-    cartNum: 0,
     soldout: false,
     buttonType: 1,
     buyNum: 1,
     selectedAttrStr: '',
-    skuArray: [],
     primaryImage: '',
-    specImg: '',
     isSpuSelectPopupShow: false,
-    isAllSelectedSku: false,
     buyType: 0,
     outOperateStatus: false, // 是否外层加入购物车
     operateType: 0,
-    selectSkuSellsPrice: 0,
 
     minSalePrice: 0,
     maxSalePrice: 0,
@@ -75,22 +68,6 @@ Page({
     this.setData({
       isSpuSelectPopupShow: false,
     });
-  },
-
-  showSkuSelectPopup(type) {
-    this.setData({
-      buyType: type || 0,
-      outOperateStatus: type >= 1,
-      isSpuSelectPopupShow: true,
-    });
-  },
-
-  buyItNow() {
-    this.showSkuSelectPopup(1);
-  },
-
-  toAddCart() {
-    this.showSkuSelectPopup(2);
   },
 
   toNav(e) {
@@ -114,180 +91,10 @@ Page({
     goodsTab && goodsTab.onScroll(scrollTop);
   },
 
-  chooseSpecItem(e) {
-    const { specList } = this.data.details;
-    const { selectedSku, isAllSelectedSku } = e.detail;
-    if (!isAllSelectedSku) {
-      this.setData({
-        selectSkuSellsPrice: 0,
-      });
-    }
-    this.setData({
-      isAllSelectedSku,
-    });
-    this.getSkuItem(specList, selectedSku);
-  },
-
-  getSkuItem(specList, selectedSku) {
-    const { skuArray, primaryImage } = this.data;
-    const selectedSkuValues = this.getSelectedSkuValues(specList, selectedSku);
-    let selectedAttrStr = ` 件  `;
-    selectedSkuValues.forEach((item) => {
-      selectedAttrStr += `，${item.specValue}  `;
-    });
-    // eslint-disable-next-line array-callback-return
-    const skuItem = skuArray.filter((item) => {
-      let status = true;
-      (item.specInfo || []).forEach((subItem) => {
-        if (
-          !selectedSku[subItem.specId] ||
-          selectedSku[subItem.specId] !== subItem.specValueId
-        ) {
-          status = false;
-        }
-      });
-      if (status) return item;
-    });
-    this.selectSpecsName(selectedSkuValues.length > 0 ? selectedAttrStr : '');
-    if (skuItem) {
-      this.setData({
-        selectItem: skuItem,
-        selectSkuSellsPrice: skuItem.price || 0,
-      });
-    } else {
-      this.setData({
-        selectItem: null,
-        selectSkuSellsPrice: 0,
-      });
-    }
-    this.setData({
-      specImg: skuItem && skuItem.skuImage ? skuItem.skuImage : primaryImage,
-    });
-  },
-
-  // 获取已选择的sku名称
-  getSelectedSkuValues(skuTree, selectedSku) {
-    const normalizedTree = this.normalizeSkuTree(skuTree);
-    return Object.keys(selectedSku).reduce((selectedValues, skuKeyStr) => {
-      const skuValues = normalizedTree[skuKeyStr];
-      const skuValueId = selectedSku[skuKeyStr];
-      if (skuValueId !== '') {
-        const skuValue = skuValues.filter((value) => {
-          return value.specValueId === skuValueId;
-        })[0];
-        skuValue && selectedValues.push(skuValue);
-      }
-      return selectedValues;
-    }, []);
-  },
-
-  normalizeSkuTree(skuTree) {
-    const normalizedTree = {};
-    skuTree.forEach((treeItem) => {
-      normalizedTree[treeItem.specId] = treeItem.specValueList;
-    });
-    return normalizedTree;
-  },
-
-  selectSpecsName(selectSpecsName) {
-    if (selectSpecsName) {
-      this.setData({
-        selectedAttrStr: selectSpecsName,
-      });
-    } else {
-      this.setData({
-        selectedAttrStr: '',
-      });
-    }
-  },
-
-  addCart() {
-    const { isAllSelectedSku } = this.data;
-    Toast({
-      context: this,
-      selector: '#t-toast',
-      message: isAllSelectedSku ? '点击加入购物车' : '请选择规格',
-      icon: '',
-      duration: 1000,
-    });
-  },
-
-  gotoBuy(type) {
-    const { isAllSelectedSku, buyNum } = this.data;
-    if (!isAllSelectedSku) {
-      Toast({
-        context: this,
-        selector: '#t-toast',
-        message: '请选择规格',
-        icon: '',
-        duration: 1000,
-      });
-      return;
-    }
-    this.handlePopupHide();
-    const query = {
-      quantity: buyNum,
-      storeId: '1',
-      spuId: this.data.spuId,
-      goodsName: this.data.details.title,
-      skuId:
-        type === 1 ? this.data.skuList[0].skuId : this.data.selectItem.skuId,
-      available: this.data.details.available,
-      price: this.data.details.minSalePrice,
-      specInfo: this.data.details.specList?.map((item) => ({
-        specTitle: item.title,
-        specValue: item.specValueList[0].specValue,
-      })),
-      primaryImage: this.data.details.primaryImage,
-      spuId: this.data.details.spuId,
-      thumb: this.data.details.primaryImage,
-      title: this.data.details.title,
-    };
-    let urlQueryStr = obj2Params({
-      goodsRequestList: JSON.stringify([query]),
-    });
-    urlQueryStr = urlQueryStr ? `?${urlQueryStr}` : '';
-    const path = `/pages/order/order-confirm/index${urlQueryStr}`;
-    wx.navigateTo({
-      url: path,
-    });
-  },
-
-  specsConfirm() {
-    const { buyType } = this.data;
-    if (buyType === 1) {
-      this.gotoBuy();
-    } else {
-      this.addCart();
-    }
-    // this.handlePopupHide();
-  },
-
-  changeNum(e) {
-    this.setData({
-      buyNum: e.detail.buyNum,
-    });
-  },
-
-  closePromotionPopup() {
-    this.setData({
-      isShowPromotionPop: false,
-    });
-  },
-
-  promotionChange(e) {
-    const { index } = e.detail;
-    wx.navigateTo({
-      url: `/pages/promotion-detail/index?promotion_id=${index}`,
-    });
-  },
-
   getDetail(spuId) {
-    Promise.all([fetchGood(spuId), fetchActivityList()]).then((res) => {
-      const [details, activityList] = res;
-      const skuArray = [];
+    Promise.all([fetchGood(spuId)]).then((res) => {
+      const [details] = res;
       const {
-        skuList,
         primaryImage,
         isPutOnSale,
         minSalePrice,
@@ -295,29 +102,12 @@ Page({
         maxLinePrice,
         soldNum,
       } = details;
-      skuList.forEach((item) => {
-        skuArray.push({
-          skuId: item.skuId,
-          quantity: item.stockInfo ? item.stockInfo.stockQuantity : 0,
-          specInfo: item.specInfo,
-        });
-      });
-      const promotionArray = [];
-      activityList.forEach((item) => {
-        promotionArray.push({
-          tag: item.promotionSubCode === 'MYJ' ? '满减' : '满折',
-          label: '满100元减99.9元',
-        });
-      });
       this.setData({
         details,
-        activityList,
         isStock: details.spuStockQuantity > 0,
         maxSalePrice: maxSalePrice ? parseInt(maxSalePrice) : 0,
         maxLinePrice: maxLinePrice ? parseInt(maxLinePrice) : 0,
         minSalePrice: minSalePrice ? parseInt(minSalePrice) : 0,
-        list: promotionArray,
-        skuArray: skuArray,
         primaryImage,
         soldout: isPutOnSale === 0,
         soldNum,

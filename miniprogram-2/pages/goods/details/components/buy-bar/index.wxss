@@ -58,7 +58,6 @@
   border-radius: 0 20rpx 20rpx 0;
 }
 
-.bar-separately.bar-addCart-disabled,
 .bar-buy.bar-buyNow-disabled{
   background: rgb(143, 148, 119);  
 }

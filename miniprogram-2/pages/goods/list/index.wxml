@@ -13,8 +13,14 @@
     <t-empty t-class="empty-tips" size="240rpx" description="暂无相关商品" />
   </view>
 
-  <view class="category-goods-list" wx:if="{{goodsList.length}}">
-    <goods-list wr-class="wr-goods-list" goodsList="{{goodsList}}" bind:click="gotoGoodsDetail" bind:addcart="handleAddCart" />
+
+  <view class="list-page-container">
+    <!-- 商品列表 -->
+    <goods-list
+      wr-class="goods-list-container"
+      goodsList="{{goodsList}}"
+      bind:click="goodListClickHandle"
+    />
   </view>
 
   <load-more wx:if="{{goodsList.length > 0}}" status="{{loadMoreStatus}}" no-more-text="没有更多了" />

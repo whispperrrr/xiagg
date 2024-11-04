@@ -75,27 +75,25 @@
   <!-- 详情介绍 -->
   <view class="desc-content">
 
-    <view class="desc-content__title" wx:if="{{details.desc.length > 0}}">
+    <view class="desc-content__title" wx:if="{{details.description.length > 0}}">
       <t-image t-class="img" src="{{recLeftImg}}" />
       <span class="desc-content__title--text">详情介绍</span>
       <t-image t-class="img" src="{{recRightImg}}" />
     </view>
 
-    <view wx:if="{{details.desc.length > 0}}" wx:for="{{details.desc}}" wx:key="index">
+    <view wx:if="{{details.description.length > 0}}" wx:for="{{details.description}}" wx:key="index">
       <t-image t-class="desc-content__img" src="{{item}}" mode="widthFix" />
     </view>
 
   </view>
 
-  <!-- 最下方 -->
+  <!-- buy-bar -->
   <view class="goods-bottom-operation">
     <buy-bar
       jumpArray="{{jumpArray}}"
       soldout="{{soldout}}"
       isStock="{{isStock}}"
-      shopCartNum="{{cartNum}}"
       buttonType="{{buttonType}}"
-      bind:toAddCart="toAddCart"
       bind:toNav="toNav"
       bind:toBuyNow="buyItNow"
       class="goods-details-card"

@@ -16,11 +16,6 @@ function mockFetchGoodsList(params) {
       item.price = item.minSalePrice;
       item.originPrice = item.maxLinePrice;
       item.desc = '';
-      if (item.spuTagList) {
-        item.tags = item.spuTagList.map((tag) => tag.title);
-      } else {
-        item.tags = [];
-      }
     });
   }
   return delay().then(() => {

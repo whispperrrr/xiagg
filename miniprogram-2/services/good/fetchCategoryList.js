@@ -1,13 +1,13 @@
 import { config } from '../../config/index';
 
-/** 获取商品列表 */
+// 获取模拟商品分类列表 
 function mockFetchGoodCategory() {
   const { delay } = require('../_utils/delay');
   const { getCategoryList } = require('../../model/category');
-  return delay().then(() => getCategoryList());
+  return delay().then(() => getCategoryList()); //延时执行getCategoryList
 }
 
-/** 获取商品列表 */
+// 获取商品分类列表
 export function getCategoryList() {
   if (config.useMock) {
     return mockFetchGoodCategory();
