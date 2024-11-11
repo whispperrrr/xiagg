@@ -28,7 +28,7 @@
           <view class="comments-title-label">对卖家的评价</view>
           <view class="comments-title-count"> ({{ commentsStatistics.commentCount }}) </view>
         </view>
-        <view class="comments-rate-wrap">
+        <view class="comments-rate-wrap" bind:tap="gotoSeller">
           <view class="person-detail">卖家详情</view>
           <t-icon name="chevron-right" size="40rpx" color="#BBBBBB" />
         </view>
@@ -46,7 +46,7 @@
         <view class="comment-item-content"> {{commentItem.commentContent}} </view>
 
       </view>
-
+ 
     </view>
 
   </view>
@@ -68,7 +68,7 @@
 
   <!-- buy-bar -->
   <view class="goods-bottom-operation">
-    <buy-bar jumpArray="{{jumpArray}}" soldout="{{soldout}}" isStock="{{isStock}}" buttonType="{{buttonType}}" bind:toNav="toNav" bind:toBuyNow="buyItNow" class="goods-details-card" />
+    <buy-bar soldout="{{soldout}}" class="goods-details-card" />
   </view>
 
 </view>

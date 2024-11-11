@@ -11,10 +11,6 @@ Component({
       type: Boolean,
       value: false,
     },
-    jumpArray: {
-      type: Array,
-      value: [],
-    },
     isStock: {
       type: Boolean,
       value: true,
@@ -23,10 +19,6 @@ Component({
       type: Boolean,
       value: false,
     }, // 是否开启按钮插槽
-    buttonType: {
-      type: Number,
-      value: 0,
-    },
     minDiscountPrice: {
       type: String,
       value: '',

@@ -1,0 +1,42 @@
+<!--pages/seller/seller.wxml-->
+
+<view class="SellerPage">
+	
+	<!-- 卖家信息 -->
+	<view class="SellerInfo">
+
+		<!-- 头像及用户名 -->
+		<view class="header">
+
+		</view>
+
+		<!-- 卖家联系方式 -->
+		<view class="SellerDetails">
+			<view class="contact">卖家联系方式：{{}}</view>
+			<view class="tip">如有心仪商品请自行添加商家联系方式进行进一步的咨询。</view>
+		</view>
+
+	</view>
+
+	<!-- 宝贝和评价 -->
+	<view class="GoodsAndComments">
+
+		<!-- 按钮 -->
+		<view class="tabs-container">
+			<button class="tab">宝贝</button>
+			<button class="tab">评价</button>
+		</view>
+
+		<!-- 卖家卖过的商品 -->
+		<view class="SellerGoodsList">
+			
+		</view>
+
+		<!-- 买家对卖家的历史评价 -->
+		<view class="CommentsToSeller">
+
+		</view>
+
+	</view>
+
+</view>

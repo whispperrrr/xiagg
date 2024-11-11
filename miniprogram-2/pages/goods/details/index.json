@@ -3,7 +3,6 @@
   "usingComponents": {
     "t-image": "/components/webp-image/index",
     "t-tag": "tdesign-miniprogram/tag/tag",
-    "t-toast": "tdesign-miniprogram/toast/toast",
     "t-swiper": "tdesign-miniprogram/swiper/swiper",
     "t-swiper-nav": "tdesign-miniprogram/swiper-nav/swiper-nav",
     "t-button": "tdesign-miniprogram/button/button",

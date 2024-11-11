@@ -3,7 +3,6 @@ import Toast from 'tdesign-miniprogram/toast/index';
 Page({
   data: {
     serviceRateValue: 1,
-    goodRateValue: 1,
     conveyRateValue: 1,
     isAnonymous: false,
     uploadFiles: [],
@@ -66,9 +65,9 @@ Page({
   },
 
   updateButtonStatus() {
-    const { serviceRateValue, goodRateValue, conveyRateValue, isAllowedSubmit } = this.data;
+    const { serviceRateValue, conveyRateValue, isAllowedSubmit } = this.data;
     const { textAreaValue } = this;
-    const temp = serviceRateValue && goodRateValue && conveyRateValue && textAreaValue;
+    const temp = serviceRateValue && conveyRateValue && textAreaValue;
     if (temp !== isAllowedSubmit) this.setData({ isAllowedSubmit: temp });
   },
 

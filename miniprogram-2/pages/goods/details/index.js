@@ -1,109 +1,42 @@
-import Toast from 'tdesign-miniprogram/toast/index';
-import {
-  fetchGood
-} from '../../../services/good/fetchGood';
+import { fetchGood } from '../../../services/good/fetchGood';
 import {
   getGoodsDetailsCommentList,
   getGoodsDetailsCommentsCount,
 } from '../../../services/good/fetchGoodsDetailsComments';
 
-import {
-  cdnBase
-} from '../../../config/index';
-
+import { cdnBase } from '../../../config/index';
 const imgPrefix = `${cdnBase}/`;
 
 const recLeftImg = `${imgPrefix}common/rec-left.png`;
 const recRightImg = `${imgPrefix}common/rec-right.png`;
-const obj2Params = (obj = {}, encode = false) => {
+
+//将一个对象转换为URL查询参数的字符串形式
+//如果调用obj2Params({name: 'John Doe', age: 30}, true)，则返回name=John%20Doe&age=30
+const obj2Params = (obj = {}) => {
   const result = [];
   Object.keys(obj).forEach((key) =>
-    result.push(`${key}=${encode ? encodeURIComponent(obj[key]) : obj[key]}`),
+    result.push(`${key}=${obj[key]}`),
   );
-
   return result.join('&');
 };
 
 Page({
   data: {
-    commentsList: [],
-    commentsStatistics: {
-      badCount: 0,
-      commentCount: 0,
-      goodCount: 0,
-      goodRate: 0,
-      hasImageCount: 0,
-      middleCount: 0,
+    commentsList: [], //评论列表
+    commentsStatistics: { //评论统计数据
+      commentCount: 0, //总评论数
     },
-    recLeftImg,
-    recRightImg,
-    details: {},
-    goodsTabArray: [{
-        name: '商品',
-        value: '', // 空字符串代表置顶
-      },
-      {
-        name: '详情',
-        value: 'goods-page',
-      },
-    ],
-    storeLogo: `${imgPrefix}common/store-logo.png`,
-    storeName: '云mall标准版旗舰店',
-    isStock: true,
-    soldout: false,
-    buttonType: 1,
-    buyNum: 1,
-    selectedAttrStr: '',
-    primaryImage: '',
-    isSpuSelectPopupShow: false,
-    buyType: 0,
-    outOperateStatus: false, // 是否外层加入购物车
-    operateType: 0,
+    recLeftImg,  //详情介绍图标左
+    recRightImg, //详情介绍图标右
 
+    details: {}, //商品详情
     SalePrice: 0,
-
-    list: [],
+    primaryImage: '',
+    soldout: false, //是否售罄 
     spuId: '',
-    navigation: {
-      type: 'fraction'
-    },
   },
 
-  handlePopupHide() {
-    this.setData({
-      isSpuSelectPopupShow: false,
-    });
-  },
-
-  toNav(e) {
-    const {
-      url
-    } = e.detail;
-    wx.switchTab({
-      url: url,
-    });
-  },
-
-  showCurImg(e) {
-    const {
-      index
-    } = e.detail;
-    const {
-      images
-    } = this.data.details;
-    wx.previewImage({
-      current: images[index],
-      urls: images, // 需要预览的图片http链接列表
-    });
-  },
-
-  onPageScroll({
-    scrollTop
-  }) {
-    const goodsTab = this.selectComponent('#goodsTab');
-    goodsTab && goodsTab.onScroll(scrollTop);
-  },
-
+  //根据spuId获取对应的商品详情到details数组里
   getDetail(spuId) {
     Promise.all([fetchGood(spuId)]).then((res) => {
       const [details] = res;
@@ -114,7 +47,6 @@ Page({
       } = details;
       this.setData({
         details,
-        isStock: details.isPutOnSale > 0,
         SalePrice: SalePrice ? parseInt(SalePrice) : 0,
         primaryImage,
         soldout: isPutOnSale === 0,
@@ -122,6 +54,7 @@ Page({
     });
   },
 
+  //获取评价列表
   async getCommentsList() {
     try {
       const code = 'Success';
@@ -149,47 +82,18 @@ Page({
     }
   },
 
-  onShareAppMessage() {
-    // 自定义的返回信息
-    const {
-      selectedAttrStr
-    } = this.data;
-    let shareSubTitle = '';
-    if (selectedAttrStr.indexOf('件') > -1) {
-      const count = selectedAttrStr.indexOf('件');
-      shareSubTitle = selectedAttrStr.slice(count + 1, selectedAttrStr.length);
-    }
-    const customInfo = {
-      imageUrl: this.data.details.primaryImage,
-      title: this.data.details.title + shareSubTitle,
-      path: `/pages/goods/details/index?spuId=${this.data.spuId}`,
-    };
-    return customInfo;
-  },
-
-  /** 获取评价统计 */
+  //获取评价统计
   async getCommentsStatistics() {
     try {
       const code = 'Success';
       const data = await getGoodsDetailsCommentsCount();
       if (code.toUpperCase() === 'SUCCESS') {
         const {
-          badCount,
           commentCount,
-          goodCount,
-          goodRate,
-          hasImageCount,
-          middleCount,
         } = data;
         const nextState = {
           commentsStatistics: {
-            badCount: parseInt(`${badCount}`),
             commentCount: parseInt(`${commentCount}`),
-            goodCount: parseInt(`${goodCount}`),
-            /** 后端返回百分比后数据但没有限制位数 */
-            goodRate: Math.floor(goodRate * 10) / 10,
-            hasImageCount: parseInt(`${hasImageCount}`),
-            middleCount: parseInt(`${middleCount}`),
           },
         };
         this.setData(nextState);
@@ -199,13 +103,14 @@ Page({
     }
   },
 
-  /** 跳转到评价列表 */
-  navToCommentsListPage() {
+  //跳转到卖家详情
+  gotoSeller() {
     wx.navigateTo({
-      url: `/pages/goods/comments/index?spuId=${this.data.spuId}`,
-    });
+      url: '/pages/seller/seller',
+    })
   },
-
+  
+  //页面加载时
   onLoad(query) {
     const {
       spuId

@@ -14,7 +14,8 @@
     "pages/goods/comments/create/index",
     "pages/usercenter/name-edit/index",
     "pages/sell/sell",
-    "pages/newmessages/newmessages"
+    "pages/newmessages/newmessages",
+    "pages/seller/seller"
   ],
   "tabBar": {
     "custom": true,
