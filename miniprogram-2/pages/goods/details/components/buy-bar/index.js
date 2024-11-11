@@ -1,7 +1,9 @@
 Component({
   externalClasses: ['wr-sold-out', 'wr-class'],
 
-  options: { multipleSlots: true },
+  options: {
+    multipleSlots: true
+  },
 
   properties: {
     soldout: {
@@ -29,7 +31,7 @@ Component({
       type: String,
       value: '',
     },
-    minSalePrice: {
+    SalePrice: {
       type: String,
       value: '',
     },
@@ -40,26 +42,30 @@ Component({
   },
 
   methods: {
-    gotoHome(){
+    gotoHome() {
       wx.switchTab({
         url: '/pages/home/home',
       })
     },
 
-    gotoWishlist(){
+    gotoWishlist() {
       wx.navigateTo({
         url: '#', //**
       })
     },
 
     toBuyNow(e) {
-      const { isStock } = this.properties;
+      const {
+        isStock
+      } = this.properties;
       if (!isStock) return;
       this.triggerEvent('toBuyNow', e);
     },
 
     toNav(e) {
-      const { url } = e.currentTarget.dataset;
+      const {
+        url
+      } = e.currentTarget.dataset;
       return this.triggerEvent('toNav', {
         e,
         url,

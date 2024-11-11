@@ -26,7 +26,6 @@
 <view class="comments-card-list">
 	<block wx:for="{{commentList}}" wx:key="index">
 		<comments-card
-		  commentScore="{{item.commentScore}}"
 		  userName="{{item.userName}}"
 		  commentResources="{{item.commentResources || []}}"
 		  commentContent="{{item.commentContent}}"

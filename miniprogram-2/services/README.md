@@ -3,9 +3,6 @@ services用于请求逻辑，根据 config.useMock 配置可控制返回 mock �
 _utils		
 		delay //模拟延迟执行
 		timeout //触发超时错误处理
-activities		
-		fetchActivities
-		fetchActivitiesList
 address		
 	fetchAddress
 comments	
@@ -21,8 +18,6 @@ good
 		fetchGoodsList
 		fetchSearchHistory
 		fetchSearchResult
-home		
-		home
 usercenter	
 		fetchPerson
 		fetchUsercenter

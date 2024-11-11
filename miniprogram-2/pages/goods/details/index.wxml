@@ -2,36 +2,22 @@
 
   <view class="goods-head">
 
-    <!-- 轮播图 -->
-    <t-swiper
-      wx:if="{{details.images.length > 0}}"
-      height="750rpx"
-      current="0"
-      autoplay
-      duration="500"
-      interval="5000"
-      navigation="{{navigation}}"
-      list="{{details.images}}"
-    ></t-swiper>
+    <!-- 首图 -->
+    <image src="{{details.images}}" class="primaryImage"/>
 
     <!-- 价格/标题/分享 -->
     <view class="goods-info">
-      
+
       <view class="goods-number">
         <view class="goods-price">
-          <price
-            wr-class="class-goods-price"
-            symbol-class="class-goods-symbol"
-            price="{{minSalePrice}}"
-            type="lighter"
-          />
+          <price wr-class="class-goods-price" symbol-class="class-goods-symbol" price="{{SalePrice}}" type="lighter" />
         </view>
       </view>
-      
+
       <view class="goods-title">
         <view class="goods-name">{{details.title}}</view>
       </view>
-      
+
     </view>
 
     <!-- 评价 -->
@@ -49,18 +35,11 @@
       </view>
 
       <view class="comment-item-wrap" wx:for="{{ commentsList }}" wx:for-item="commentItem" wx:key="goodsSpu">
-      
+
         <view class="comment-item-head">
           <t-image src="{{commentItem.userHeadUrl}}" t-class="comment-item-avatar" />
           <view class="comment-head-right">
             <view class="comment-username">{{commentItem.userName}}</view>
-            <t-rate
-              value="{{ commentItem.commentScore }}"
-              count="{{5}}"
-              size="12"
-              gap="2"
-              color="{{['#ffc51c', '#ddd']}}"
-            />
           </view>
         </view>
 
@@ -69,7 +48,7 @@
       </view>
 
     </view>
-    
+
   </view>
 
   <!-- 详情介绍 -->
@@ -89,15 +68,7 @@
 
   <!-- buy-bar -->
   <view class="goods-bottom-operation">
-    <buy-bar
-      jumpArray="{{jumpArray}}"
-      soldout="{{soldout}}"
-      isStock="{{isStock}}"
-      buttonType="{{buttonType}}"
-      bind:toNav="toNav"
-      bind:toBuyNow="buyItNow"
-      class="goods-details-card"
-    />
+    <buy-bar jumpArray="{{jumpArray}}" soldout="{{soldout}}" isStock="{{isStock}}" buttonType="{{buttonType}}" bind:toNav="toNav" bind:toBuyNow="buyItNow" class="goods-details-card" />
   </view>
 
 </view>

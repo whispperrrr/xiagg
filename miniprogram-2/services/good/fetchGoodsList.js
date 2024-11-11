@@ -1,20 +1,24 @@
-/* eslint-disable no-param-reassign */
-import { config } from '../../config/index';
+import {
+  config
+} from '../../config/index';
 
-/** 获取商品列表 */
+//获取模拟商品列表
 function mockFetchGoodsList(params) {
-  const { delay } = require('../_utils/delay');
-  const { getSearchResult } = require('../../model/search');
+  const {
+    delay
+  } = require('../_utils/delay');
+  const {
+    getSearchResult
+  } = require('../../model/search');
 
   const data = getSearchResult(params);
 
   if (data.spuList.length) {
-    data.spuList.forEach((item) => {
+    data.spuList.forEach((item) => { //forEach对数组中的每一个元素执行一次给定的函数
       item.spuId = item.spuId;
       item.thumb = item.primaryImage;
       item.title = item.title;
-      item.price = item.minSalePrice;
-      item.originPrice = item.maxLinePrice;
+      item.price = item.SalePrice;
       item.desc = '';
     });
   }
@@ -23,7 +27,7 @@ function mockFetchGoodsList(params) {
   });
 }
 
-/** 获取商品列表 */
+//获取商品列表
 export function fetchGoodsList(params) {
   if (config.useMock) {
     return mockFetchGoodsList(params);

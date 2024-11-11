@@ -1,11 +1,15 @@
 import Toast from 'tdesign-miniprogram/toast/index';
-import { fetchGood } from '../../../services/good/fetchGood';
+import {
+  fetchGood
+} from '../../../services/good/fetchGood';
 import {
   getGoodsDetailsCommentList,
   getGoodsDetailsCommentsCount,
 } from '../../../services/good/fetchGoodsDetailsComments';
 
-import { cdnBase } from '../../../config/index';
+import {
+  cdnBase
+} from '../../../config/index';
 
 const imgPrefix = `${cdnBase}/`;
 
@@ -34,8 +38,7 @@ Page({
     recLeftImg,
     recRightImg,
     details: {},
-    goodsTabArray: [
-      {
+    goodsTabArray: [{
         name: '商品',
         value: '', // 空字符串代表置顶
       },
@@ -57,11 +60,13 @@ Page({
     outOperateStatus: false, // 是否外层加入购物车
     operateType: 0,
 
-    minSalePrice: 0,
-    maxSalePrice: 0,
+    SalePrice: 0,
+
     list: [],
     spuId: '',
-    navigation: { type: 'fraction' },
+    navigation: {
+      type: 'fraction'
+    },
   },
 
   handlePopupHide() {
@@ -71,22 +76,30 @@ Page({
   },
 
   toNav(e) {
-    const { url } = e.detail;
+    const {
+      url
+    } = e.detail;
     wx.switchTab({
       url: url,
     });
   },
 
   showCurImg(e) {
-    const { index } = e.detail;
-    const { images } = this.data.details;
+    const {
+      index
+    } = e.detail;
+    const {
+      images
+    } = this.data.details;
     wx.previewImage({
       current: images[index],
       urls: images, // 需要预览的图片http链接列表
     });
   },
 
-  onPageScroll({ scrollTop }) {
+  onPageScroll({
+    scrollTop
+  }) {
     const goodsTab = this.selectComponent('#goodsTab');
     goodsTab && goodsTab.onScroll(scrollTop);
   },
@@ -97,20 +110,14 @@ Page({
       const {
         primaryImage,
         isPutOnSale,
-        minSalePrice,
-        maxSalePrice,
-        maxLinePrice,
-        soldNum,
+        SalePrice,
       } = details;
       this.setData({
         details,
-        isStock: details.spuStockQuantity > 0,
-        maxSalePrice: maxSalePrice ? parseInt(maxSalePrice) : 0,
-        maxLinePrice: maxLinePrice ? parseInt(maxLinePrice) : 0,
-        minSalePrice: minSalePrice ? parseInt(minSalePrice) : 0,
+        isStock: details.isPutOnSale > 0,
+        SalePrice: SalePrice ? parseInt(SalePrice) : 0,
         primaryImage,
         soldout: isPutOnSale === 0,
-        soldNum,
       });
     });
   },
@@ -119,18 +126,19 @@ Page({
     try {
       const code = 'Success';
       const data = await getGoodsDetailsCommentList();
-      const { homePageComments } = data;
+      const {
+        homePageComments
+      } = data;
       if (code.toUpperCase() === 'SUCCESS') {
         const nextState = {
           commentsList: homePageComments.map((item) => {
             return {
               goodsSpu: item.spuId,
               userName: item.userName || '',
-              commentScore: item.commentScore,
               commentContent: item.commentContent || '用户未填写评价',
-              userHeadUrl: item.isAnonymity
-                ? this.anonymityAvatar
-                : item.userHeadUrl || this.anonymityAvatar,
+              userHeadUrl: item.isAnonymity ?
+                this.anonymityAvatar :
+                item.userHeadUrl || this.anonymityAvatar,
             };
           }),
         };
@@ -143,7 +151,9 @@ Page({
 
   onShareAppMessage() {
     // 自定义的返回信息
-    const { selectedAttrStr } = this.data;
+    const {
+      selectedAttrStr
+    } = this.data;
     let shareSubTitle = '';
     if (selectedAttrStr.indexOf('件') > -1) {
       const count = selectedAttrStr.indexOf('件');
@@ -197,7 +207,9 @@ Page({
   },
 
   onLoad(query) {
-    const { spuId } = query;
+    const {
+      spuId
+    } = query;
     this.setData({
       spuId: spuId,
     });

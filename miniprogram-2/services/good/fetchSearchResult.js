@@ -1,10 +1,16 @@
 /* eslint-disable no-param-reassign */
-import { config } from '../../config/index';
+import {
+  config
+} from '../../config/index';
 
 /** 获取搜索历史 */
 function mockSearchResult(params) {
-  const { delay } = require('../_utils/delay');
-  const { getSearchResult } = require('../../model/search');
+  const {
+    delay
+  } = require('../_utils/delay');
+  const {
+    getSearchResult
+  } = require('../../model/search');
 
   const data = getSearchResult(params);
 
@@ -13,8 +19,7 @@ function mockSearchResult(params) {
       item.spuId = item.spuId;
       item.thumb = item.primaryImage;
       item.title = item.title;
-      item.price = item.minSalePrice;
-      item.originPrice = item.maxLinePrice;
+      item.price = item.SalePrice;
     });
   }
   return delay().then(() => {

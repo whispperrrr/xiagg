@@ -3,6 +3,11 @@ page {
   width: 100vw;
 }
 
+.primaryImage{
+  height: 750rpx;
+  width: 100%;
+}
+
 .goods-detail-page .goods-info {
   margin: 0 auto;
   padding: 26rpx 0 28rpx 30rpx;

@@ -1,19 +1,20 @@
 Component({
   options: {
-    addGlobalClass: true,
+    addGlobalClass: true, //使用全局样式类
   },
 
   properties: {
     id: {
       type: String,
       value: '',
-      observer(id) {
+      observer(id) { //当id属性发生变化时，会调用这个函数。在这个函数中，会调用
         this.genIndependentID(id);
         if (this.properties.thresholds?.length) {
           this.createIntersectionObserverHandle();
         }
       },
     },
+
     data: {
       type: Object,
       observer(data) {
@@ -27,6 +28,7 @@ Component({
         this.setData({ goods: data, isValidityLinePrice });
       },
     },
+
     currency: {
       type: String,
       value: '¥',
@@ -35,7 +37,7 @@ Component({
     thresholds: {
       type: Array,
       value: [],
-      observer(thresholds) {
+      observer(thresholds) { 
         if (thresholds && thresholds.length) {
           this.createIntersectionObserverHandle();
         } else {
@@ -48,7 +50,6 @@ Component({
   data: {
     independentID: '',
     goods: { id: '' },
-    isValidityLinePrice: false,
   },
 
   lifetimes: {

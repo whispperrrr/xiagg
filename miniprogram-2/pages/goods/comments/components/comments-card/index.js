@@ -24,10 +24,6 @@ Component({
       type: String,
       value: '',
     },
-    commentScore: {
-      type: Number,
-      value: 0,
-    },
     commentTime: {
       type: String,
       value: '',

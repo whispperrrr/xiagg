@@ -1,5 +1,7 @@
 /* eslint-disable no-param-reassign */
-import { getSearchResult } from '../../../services/good/fetchSearchResult';
+import {
+  getSearchResult
+} from '../../../services/good/fetchSearchResult';
 import Toast from 'tdesign-miniprogram/toast/index';
 
 const initFilters = {
@@ -15,8 +17,7 @@ Page({
     show: false,
     minVal: '',
     maxVal: '',
-    minSalePriceFocus: false,
-    maxSalePriceFocus: false,
+    SalePriceFocus: false,
     filter: initFilters,
     hasLoaded: false,
     keywords: '',
@@ -29,9 +30,10 @@ Page({
   pageSize: 30,
 
   onLoad(options) {
-    const { searchValue = '' } = options || {};
-    this.setData(
-      {
+    const {
+      searchValue = ''
+    } = options || {};
+    this.setData({
         keywords: searchValue,
       },
       () => {
@@ -41,9 +43,20 @@ Page({
   },
 
   generalQueryData(reset = false) {
-    const { filter, keywords, minVal, maxVal } = this.data;
-    const { pageNum, pageSize } = this;
-    const { sorts, overall } = filter;
+    const {
+      filter,
+      keywords,
+      minVal,
+      maxVal
+    } = this.data;
+    const {
+      pageNum,
+      pageSize
+    } = this;
+    const {
+      sorts,
+      overall
+    } = filter;
     const params = {
       sort: 0, // 0 综合，1 价格
       pageNum: 1,
@@ -71,7 +84,10 @@ Page({
   },
 
   async init(reset = true) {
-    const { loadMoreStatus, goodsList = [] } = this.data;
+    const {
+      loadMoreStatus,
+      goodsList = []
+    } = this.data;
     const params = this.generalQueryData(reset);
     if (loadMoreStatus !== 0) return;
     this.setData({
@@ -83,7 +99,10 @@ Page({
       const code = 'Success';
       const data = result;
       if (code.toUpperCase() === 'SUCCESS') {
-        const { spuList, totalCount = 0 } = data;
+        const {
+          spuList,
+          totalCount = 0
+        } = data;
         if (totalCount === 0 && reset) {
           this.total = totalCount;
           this.setData({
@@ -100,7 +119,9 @@ Page({
 
         const _goodsList = reset ? spuList : goodsList.concat(spuList);
         _goodsList.forEach((v) => {
-          v.hideKey = { desc: true };
+          v.hideKey = {
+            desc: true
+          };
         });
         const _loadMoreStatus = _goodsList.length === totalCount ? 2 : 0;
         this.pageNum = params.pageNum || 1;
@@ -135,8 +156,7 @@ Page({
   },
 
   handleSubmit() {
-    this.setData(
-      {
+    this.setData({
         goodsList: [],
         loadMoreStatus: 0,
       },
@@ -147,8 +167,12 @@ Page({
   },
 
   onReachBottom() {
-    const { goodsList } = this.data;
-    const { total = 0 } = this;
+    const {
+      goodsList
+    } = this.data;
+    const {
+      total = 0
+    } = this;
     if (goodsList.length === total) {
       this.setData({
         loadMoreStatus: 2,
@@ -167,16 +191,25 @@ Page({
   },
 
   gotoGoodsDetail(e) {
-    const { index } = e.detail;
-    const { spuId } = this.data.goodsList[index];
+    const {
+      index
+    } = e.detail;
+    const {
+      spuId
+    } = this.data.goodsList[index];
     wx.navigateTo({
       url: `/pages/goods/details/index?spuId=${spuId}`,
     });
   },
 
   handleFilterChange(e) {
-    const { overall, sorts } = e.detail;
-    const { total } = this;
+    const {
+      overall,
+      sorts
+    } = e.detail;
+    const {
+      total
+    } = this;
     const _filter = {
       sorts,
       overall,
@@ -188,8 +221,7 @@ Page({
     });
 
     this.pageNum = 1;
-    this.setData(
-      {
+    this.setData({
         goodsList: [],
         loadMoreStatus: 0,
       },
@@ -212,21 +244,35 @@ Page({
   },
 
   onMinValAction(e) {
-    const { value } = e.detail;
-    this.setData({ minVal: value });
+    const {
+      value
+    } = e.detail;
+    this.setData({
+      minVal: value
+    });
   },
 
   onMaxValAction(e) {
-    const { value } = e.detail;
-    this.setData({ maxVal: value });
+    const {
+      value
+    } = e.detail;
+    this.setData({
+      maxVal: value
+    });
   },
 
   reset() {
-    this.setData({ minVal: '', maxVal: '' });
+    this.setData({
+      minVal: '',
+      maxVal: ''
+    });
   },
 
   confirm() {
-    const { minVal, maxVal } = this.data;
+    const {
+      minVal,
+      maxVal
+    } = this.data;
     let message = '';
     if (minVal && !maxVal) {
       message = `价格最小是${minVal}`;
@@ -245,8 +291,7 @@ Page({
       });
     }
     this.pageNum = 1;
-    this.setData(
-      {
+    this.setData({
         show: false,
         minVal: '',
         goodsList: [],

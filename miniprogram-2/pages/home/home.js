@@ -1,13 +1,9 @@
-import { fetchHome } from '../../services/home/home';
 import { fetchGoodsList } from '../../services/good/fetchGoods';
-import Toast from 'tdesign-miniprogram/toast/index';
 
 Page({
   data: {
-    goodsList: [],
-    goodsListLoadStatus: 0,
-    pageLoading: false,
-    current: 1,
+    goodsList: [], //存储商品列表数据
+    goodsListLoadStatus: 0, //商品列表加载状态，0-未加载，1-加载中，2-加载失败
 
     //校区选择
     index: 0,
@@ -28,55 +24,37 @@ Page({
     })
   },
   
+  //分页
   goodListPagination: {
-    num: 20,
-    index: 0,
+    num: 20, //每页的商品数量
+    index: 0, //当前页码索引
   },
 
-  privateData: {
-    tabIndex: 0,
-  },
-
+  //页面显示时，初始化底部标签栏
   onShow() {
     this.getTabBar().init();
   },
 
+  //页面加载时
   onLoad() {
-    this.init();
+    this.loadHomePage();
   },
 
+  //滚动到底部时
   onReachBottom() {
     if (this.data.goodsListLoadStatus === 0) {
       this.loadGoodsList();
     }
   },
 
+  //下拉刷新
   onPullDownRefresh() {
-    this.init();
-  },
-
-  init() {
     this.loadHomePage();
   },
 
+  //加载home页面
   loadHomePage() {
     wx.stopPullDownRefresh();
-
-    this.setData({
-      pageLoading: true,
-    });
-    fetchHome().then(({ swiper, tabList }) => {
-      this.setData({
-        tabList,
-        imgSrcs: swiper,
-        pageLoading: false,
-      });
-      this.loadGoodsList(true);
-    });
-  },
-
-  tabChangeHandle(e) {
-    this.privateData.tabIndex = e.detail;
     this.loadGoodsList(true);
   },
 
@@ -84,17 +62,18 @@ Page({
     this.loadGoodsList();
   },
 
+  // 加载商品列表
   async loadGoodsList(fresh = false) {
-    if (fresh) { //将页面滚动到顶部，并重置页码为0
+    if (fresh) { //fresh = true，表示强制刷新
       wx.pageScrollTo({
         scrollTop: 0,
       });
     }
 
-    this.setData({ goodsListLoadStatus: 1 });
+    this.setData({ goodsListLoadStatus: 1 }); //状态为1-加载中
 
     const pageSize = this.goodListPagination.num;
-    let pageIndex = this.privateData.tabIndex * pageSize + this.goodListPagination.index + 1;
+    let pageIndex = this.goodListPagination.index + 1; //页数+1
     if (fresh) {
       pageIndex = 0;
     }
@@ -103,40 +82,22 @@ Page({
       const nextList = await fetchGoodsList(pageIndex, pageSize);
       this.setData({
         goodsList: fresh ? nextList : this.data.goodsList.concat(nextList),
-        goodsListLoadStatus: 0,
+        goodsListLoadStatus: 0, //状态为0-未加载
       });
 
       this.goodListPagination.index = pageIndex;
       this.goodListPagination.num = pageSize;
-    } catch (err) {
-      this.setData({ goodsListLoadStatus: 3 });
+    } catch (err) { 
+      this.setData({ goodsListLoadStatus: 2 }); //如果获取商品列表失败，状态为2-加载失败
     }
   },
 
-  goodListClickHandle(e) {
-    const { index } = e.detail;
-    const { spuId } = this.data.goodsList[index];
+  //跳转到商品详情页
+  gotoGoodDetailPage(e) {
+    const { index } = e.detail;  //获取点击事件传递的商品索引
+    const { spuId } = this.data.goodsList[index]; //从商品列表中获取对应索引的商品的spuId
     wx.navigateTo({
       url: `/pages/goods/details/index?spuId=${spuId}`,
-    });
-  },
-
-  goodListAddCartHandle() {
-    Toast({
-      context: this,
-      selector: '#t-toast',
-      message: '点击加入购物车',
-    });
-  },
-
-  navToSearchPage() {
-    wx.navigateTo({ url: '/pages/goods/search/index' });
-  },
-
-  navToActivityDetail({ detail }) {
-    const { index: promotionID = 0 } = detail || {};
-    wx.navigateTo({
-      url: `/pages/promotion-detail/index?promotion_id=${promotionID}`,
     });
   },
 });

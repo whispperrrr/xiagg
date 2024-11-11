@@ -42,7 +42,6 @@ export function getGoodsAllComments(params) {
                 'https://cdn-we-retail.ym.tencent.com/tsr/goods/nz-08b.png',
             },
           ],
-          commentScore: 4,
           uid: '88881048075',
           userName: 'Dean',
           userHeadUrl:
@@ -65,7 +64,6 @@ export function getGoodsAllComments(params) {
               type: 'image',
             },
           ],
-          commentScore: 4,
           uid: '88881048075',
           userName: 'Dean',
           userHeadUrl:
@@ -94,7 +92,6 @@ export function getGoodsAllComments(params) {
                 'https://cdn-we-retail.ym.tencent.com/tsr/goods/nz-08b.png',
             },
           ],
-          commentScore: 4,
           uid: '88881048075',
           userName: 'Dean',
           userHeadUrl:
@@ -129,7 +126,6 @@ export function getGoodsAllComments(params) {
                 'https://cdn-we-retail.ym.tencent.com/tsr/goods/nz-08b.png',
             },
           ],
-          commentScore: 4,
           uid: '88881048075',
           userName: 'Dean',
           userHeadUrl:
@@ -155,7 +151,6 @@ export function getGoodsAllComments(params) {
         commentContent:
           '收到货了，第一时间试了一下，很漂亮特别喜欢，大爱大爱，颜色也很好看。棒棒!',
         commentImageUrls: null,
-        commentScore: 1,
         uid: '88881048075',
         userName: 'Dean',
         userHeadUrl:
@@ -173,7 +168,6 @@ export function getGoodsAllComments(params) {
         commentContent:
           '收到货了，第一时间试了一下，很漂亮特别喜欢，大爱大爱，颜色也很好看。棒棒!',
         commentImageUrls: null,
-        commentScore: 1,
         uid: '88881048075',
         userName: 'Dean',
         userHeadUrl:
@@ -191,7 +185,6 @@ export function getGoodsAllComments(params) {
         commentContent:
           '收到货了，第一时间试了一下，很漂亮特别喜欢，大爱大爱，颜色也很好看。棒棒!',
         commentImageUrls: null,
-        commentScore: 5,
         uid: '88881048075',
         userName: 'Dean',
         userHeadUrl:
@@ -208,7 +201,6 @@ export function getGoodsAllComments(params) {
         commentContent:
           '收到货了，第一时间试了一下，很漂亮特别喜欢，大爱大爱，颜色也很好看。棒棒!',
         commentImageUrls: null,
-        commentScore: 5,
         uid: '88881048075',
         userName: 'Dean',
         userHeadUrl:
@@ -224,7 +216,6 @@ export function getGoodsAllComments(params) {
         commentContent:
           '收到货了，第一时间试了一下，很漂亮特别喜欢，大爱大爱，颜色也很好看。棒棒!',
         commentImageUrls: null,
-        commentScore: 5,
         uid: '88881048075',
         userName: 'Dean',
         userHeadUrl:
@@ -239,7 +230,6 @@ export function getGoodsAllComments(params) {
         commentContent:
           '收到货了，第一时间试了一下，很漂亮特别喜欢，大爱大爱，颜色也很好看。棒棒!',
         commentImageUrls: null,
-        commentScore: 4,
         uid: '88881048075',
         userName: 'Dean',
         userHeadUrl:
@@ -254,7 +244,6 @@ export function getGoodsAllComments(params) {
         commentContent:
           '收到货了，第一时间试了一下，很漂亮特别喜欢，大爱大爱，颜色也很好看。棒棒!',
         commentImageUrls: null,
-        commentScore: 5,
         uid: '88881048075',
         userName: 'Dean',
         userHeadUrl:
@@ -269,7 +258,6 @@ export function getGoodsAllComments(params) {
         commentContent:
           '收到货了，第一时间试了一下，很漂亮特别喜欢，大爱大爱，颜色也很好看。棒棒!',
         commentImageUrls: null,
-        commentScore: 5,
         uid: '88881048075',
         userName: 'Dean',
         userHeadUrl:
@@ -284,7 +272,6 @@ export function getGoodsAllComments(params) {
         commentContent:
           '收到货了，第一时间试了一下，很漂亮特别喜欢，大爱大爱，颜色也很好看。棒棒!',
         commentImageUrls: null,
-        commentScore: 5,
         uid: '88881055835',
         userName: 'Max',
         userHeadUrl:
@@ -298,7 +285,6 @@ export function getGoodsAllComments(params) {
         specInfo: '测试dr超长:dr专用超长;bwtgg01:fff',
         commentContent: '',
         commentImageUrls: null,
-        commentScore: 5,
         uid: '88881055835',
         userName: 'Max',
         userHeadUrl:
