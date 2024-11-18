@@ -1,0 +1,8 @@
+
+<view class="startcontainer" bindtap="goHome">
+  <image class="logo full-screen" src="/images1/image_start/1.png" style="width: 750rpx; height: 1450rpx; display: block; box-sizing: border-box; left: 0rpx; top: 0rpx"> 
+  
+  </image>
+  <!-- 全屏触摸层 -->
+  <view class="full-screen" bindtap="goHome"></view>
+</view>
