@@ -1,0 +1,91 @@
+/* pages/usercenter/Iselled/index.wxss */
+page {
+  box-sizing: border-box;
+  padding-bottom: calc(env(safe-area-inset-bottom) + 96rpx);
+}
+
+/* 上方导航栏 */
+.header-section{
+  display:flex;
+  align-items: center;
+  justify-content: center;
+  height: 90rpx;
+  background-color: #fff;
+  margin-top: -1rpx;
+}
+
+.left-section{
+  display: flex;
+}
+
+.position-icon{
+  width: 60rpx;
+  height: 60rpx;
+  margin-left: 27rpx;
+}
+
+.picker {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+
+  width: 240rpx;
+  height: 60rpx;
+  opacity: 1;
+  margin-left: 10rpx;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.right-button{
+  width: 110rpx;
+  height: 70rpx;
+  border-radius: 40rpx;
+  background: rgba(255, 235, 59, 1);
+  margin-left: 280rpx;
+}
+.right-button:active{
+  background-color: rgba(168, 132, 1, 0.637);
+  transform: translateY(2rpx);
+}
+
+.search-icon{
+  height: 60rpx;
+  width: 60rpx;
+
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* 轮播图 */
+.swiper-section{
+  display: flex;
+  justify-content: center;
+  margin-top: 20rpx;
+}
+
+.swiper {
+  height: 280rpx;
+  width: 675rpx;
+}
+
+.swiper-image{
+  width: 100%;
+  height: 100%;
+}
+
+/* 商品列表 */
+.home-page-container,
+.home-page-header {
+  display: block;
+  padding: 0 24rpx;
+}
+
+.home-page-container .goods-list-container {
+  margin-top: 36rpx;
+}

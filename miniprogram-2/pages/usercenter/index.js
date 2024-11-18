@@ -92,7 +92,7 @@ Page({
     wx.navigateTo({url:'/pages/goods/list/index'});
   },
    myselled: function() {
-    wx.navigateTo({url:'/pages/goods/list/index'});
+    wx.navigateTo({url:'/pages/usercenter/mysold'});
   }, 
   iget: function() {
     wx.navigateTo({url:'/pages/goods/list/index'});
