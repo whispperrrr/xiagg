@@ -1,20 +1,2 @@
-<view class="comments-card-list">
-	<block wx:for="{{commentList}}" wx:key="index">
-		<comments-card
-		  userName="{{item.userName}}"
-		  commentResources="{{item.commentResources || []}}"
-		  commentContent="{{item.commentContent}}"
-		  commentTime="{{item.commentTime}}"
-		  userHeadUrl="{{item.userHeadUrl}}"
-		/>
-	</block>
-	
-	<t-load-more
-	  t-class="no-more"
-	  status="{{loadMoreStatus}}"
-	  no-more-text="没有更多了"
-	  color="#BBBBBB"
-	  failedColor="#FA550F"
-	/>
-</view>
-
+<!--pages/goods/comments/index.wxml-->
+<text>pages/goods/comments/index.wxml</text>

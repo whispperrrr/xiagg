@@ -57,6 +57,10 @@
 	padding: 15rpx 30rpx;
 }
 
+/* 宝贝 */
+.goods-list-container{
+	padding: 15rpx;
+}
 
 /* 评价列表 */
 .comment-item{

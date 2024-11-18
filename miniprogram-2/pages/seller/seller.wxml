@@ -32,12 +32,15 @@
 			t-class-content="custom-panel"
 		>
 
+			<!-- 卖过的宝贝 -->
 			<t-tab-panel label="宝贝" value="0" style="{{tabPanelstyle}}">
-				<view class="sellerGoods">
-					卖过的宝贝
-				</view>
+				<goods-list
+					wr-class="goods-list-container"
+					goodsList="{{goodsList}}"
+				/>
 			</t-tab-panel>
 
+			<!-- 评价列表 -->
 			<t-tab-panel label="评价" value="1" style="{{tabPanelstyle}}">
 
 				<view wx:for="{{commentsList}}" wx:key="spuId" class="comment-item">
