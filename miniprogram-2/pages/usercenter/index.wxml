@@ -30,7 +30,7 @@
     </view>
     <view style="background-color:rgba(229, 229, 229, 1);flex:1;">
       <button class="mine-nouserinfo-avatar" open-type="getUserInfo" size="mini"  bindtap="mywant" style="width: 141rpx; height: 110rpx; display: inline-block; box-sizing: border-box; left: 0rpx; top: -2rpx; position: relative; color: rgba(229, 229, 229, 1)">
-        <image class="btnImg" src="https://s2.loli.net/2024/10/14/KaXq5YHiObmkW4B.png" style="width: 106rpx; display: inline-block; box-sizing: border-box; height: 97rpx"></image>
+        <image class="btnImg" src="/images1/image_goodsdetail/喜欢@3x.png" style="width: 106rpx; display: inline-block; box-sizing: border-box; height: 97rpx"></image>
       </button>
       <text style="position: relative; left: 34rpx; top: -10rpx">心愿单</text>
     </view>
