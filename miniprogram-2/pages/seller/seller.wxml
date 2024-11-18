@@ -7,7 +7,8 @@
 
 		<!-- 头像及用户名 -->
 		<view class="header">
-
+			<image class="SellerImg" src="" />
+			<view class="SellerName">卖家用户名</view>
 		</view>
 
 		<!-- 卖家联系方式 -->
@@ -21,21 +22,44 @@
 	<!-- 宝贝和评价 -->
 	<view class="GoodsAndComments">
 
-		<!-- 按钮 -->
-		<view class="tabs-container">
-			<button class="tab">宝贝</button>
-			<button class="tab">评价</button>
-		</view>
+		<t-tabs
+			theme="tag"
+			animation="{{ { duration: 0.6 } }}"
+			defaultValue="{{0}}"
+			bind:change="onTabsChange"
+			bind:click="onTabsClick"
+			t-class="custom-tabs"
+			t-class-content="custom-panel"
+		>
 
-		<!-- 卖家卖过的商品 -->
-		<view class="SellerGoodsList">
-			
-		</view>
+			<!-- 卖过的宝贝 -->
+			<t-tab-panel label="宝贝" value="0" style="{{tabPanelstyle}}">
+				<goods-list
+					wr-class="goods-list-container"
+					goodsList="{{goodsList}}"
+				/>
+			</t-tab-panel>
 
-		<!-- 买家对卖家的历史评价 -->
-		<view class="CommentsToSeller">
+			<!-- 评价列表 -->
+			<t-tab-panel label="评价" value="1" style="{{tabPanelstyle}}">
 
-		</view>
+				<view wx:for="{{commentsList}}" wx:key="spuId" class="comment-item">
+
+					<view class="buyer-header">
+						<image class="buyer-avatar" src="{{item.userHeadUrl}}"></image>
+						<view class="buyer-name">{{item.userName}}</view>
+					</view>
+
+					<view class="comment-content">{{item.commentContent}}</view>
+
+					<view class="comment-time">{{item.commentTime}}</view>
+
+				</view>
+
+			</t-tab-panel>
+
+		</t-tabs>
+
 
 	</view>
 

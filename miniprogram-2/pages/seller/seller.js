@@ -1,62 +1,41 @@
-// pages/seller/seller.js
+import { fetchGoodsList } from '../../services/good/fetchGoods';
+import { fetchComments } from '../../services/comments/fetchComments';
+import dayjs from 'dayjs';
+
 Page({
   data: {
-
+    goodsList:[], //存储商品列表
+    commentsList: [], //存储评价列表
   },
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad(options) {
-
+  onLoad: function () {
+    this.getSoldGoodsList();
+    this.getCommentsList();
   },
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady() {
-
+  //获取商品列表
+  getSoldGoodsList(){
+    fetchGoodsList().then((res) => {
+      this.setData({
+        goodsList: res
+      });
+    });
   },
 
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload() {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh() {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom() {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage() {
+  //获取评论列表
+  getCommentsList() {
+    fetchComments().then((res) => {
+      const formattedList = res.pageList.map((item) => {
+        return {
+         ...item,
+          commentTime: dayjs(Number(item.commentTime)).format('YYYY/MM/DD HH:mm') //处理时间格式
+        };
+      });
+      this.setData({
+        commentsList: formattedList
+      });
+    }); //getCommentsList
 
   }
+
 })

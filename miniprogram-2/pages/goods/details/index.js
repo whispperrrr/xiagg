@@ -69,9 +69,7 @@ Page({
               goodsSpu: item.spuId,
               userName: item.userName || '',
               commentContent: item.commentContent || '用户未填写评价',
-              userHeadUrl: item.isAnonymity ?
-                this.anonymityAvatar :
-                item.userHeadUrl || this.anonymityAvatar,
+              userHeadUrl: item.userHeadUrl,
             };
           }),
         };

@@ -7,11 +7,8 @@ Component({
     id: {
       type: String,
       value: '',
-      observer(id) { //当id属性发生变化时，会调用这个函数。在这个函数中，会调用
+      observer(id) {
         this.genIndependentID(id);
-        if (this.properties.thresholds?.length) {
-          this.createIntersectionObserverHandle();
-        }
       },
     },
 
@@ -21,58 +18,29 @@ Component({
         if (!data) {
           return;
         }
-        let isValidityLinePrice = true;
-        if (data.originPrice && data.price && data.originPrice < data.price) {
-          isValidityLinePrice = false;
-        }
-        this.setData({ goods: data, isValidityLinePrice });
+        this.setData({ goods: data });
       },
     },
-
-    currency: {
-      type: String,
-      value: '¥',
-    },
-
-    thresholds: {
-      type: Array,
-      value: [],
-      observer(thresholds) { 
-        if (thresholds && thresholds.length) {
-          this.createIntersectionObserverHandle();
-        } else {
-          this.clearIntersectionObserverHandle();
-        }
-      },
-    },
-  },
+  }, //properties
 
   data: {
-    independentID: '',
-    goods: { id: '' },
+    independentID: '', //用于给商品卡片设置独立的id
+    goods: { id: '' }, //存储商品相关信息
   },
 
   lifetimes: {
     ready() {
-      this.init();
-    },
-    detached() {
-      this.clear();
+      this.genIndependentID(this.properties.id);
     },
   },
 
-  pageLifeTimes: {},
-
   methods: {
-    clickHandle() {
+    clickHandle() { //触发click自定义事件，并将当前组件的goods数据作为参数传递出去
+      //console.log(this.data.goods);
       this.triggerEvent('click', { goods: this.data.goods });
     },
 
-    clickThumbHandle() {
-      this.triggerEvent('thumb', { goods: this.data.goods });
-    },
-
-    genIndependentID(id) {
+    genIndependentID(id) { //根据传入的 id 参数生成独立的 id，如果传入的 id 为空，则随机生成一个以 goods-card- 开头的 id，并更新组件内部的 independentID 数据
       let independentID;
       if (id) {
         independentID = id;
@@ -81,51 +49,5 @@ Component({
       }
       this.setData({ independentID });
     },
-
-    init() {
-      const { thresholds, id } = this.properties;
-      this.genIndependentID(id);
-      if (thresholds && thresholds.length) {
-        this.createIntersectionObserverHandle();
-      }
-    },
-
-    clear() {
-      this.clearIntersectionObserverHandle();
-    },
-
-    intersectionObserverContext: null,
-
-    createIntersectionObserverHandle() {
-      if (this.intersectionObserverContext || !this.data.independentID) {
-        return;
-      }
-      this.intersectionObserverContext = this.createIntersectionObserver({
-        thresholds: this.properties.thresholds,
-      }).relativeToViewport();
-
-      this.intersectionObserverContext.observe(
-        `#${this.data.independentID}`,
-        (res) => {
-          this.intersectionObserverCB(res);
-        },
-      );
-    },
-
-    intersectionObserverCB() {
-      this.triggerEvent('ob', {
-        goods: this.data.goods,
-        context: this.intersectionObserverContext,
-      });
-    },
-
-    clearIntersectionObserverHandle() {
-      if (this.intersectionObserverContext) {
-        try {
-          this.intersectionObserverContext.disconnect();
-        } catch (e) {}
-        this.intersectionObserverContext = null;
-      }
-    },
-  },
+  }, //methods
 });
