@@ -144,3 +144,14 @@ page {
 .cell-box .t-cell-padding {
   padding: 24rpx 18rpx 24rpx 32rpx;
 }
+
+.mine-nouserinfo-avatar {
+  background-color:transparent;
+}
+.mine-nouserinfo-avatar::after {
+  border: none; 
+}
+.btnImg {
+  width: 128rpx;
+  height: 128rpx;
+}

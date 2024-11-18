@@ -10,13 +10,7 @@ const menuData = [
       type: 'address',
     },
     {
-      title: '优惠券',
-      tit: '',
-      url: '',
-      type: 'coupon',
-    },
-    {
-      title: '积分',
+      title: '信誉积分',
       tit: '',
       url: '',
       type: 'point',
@@ -41,38 +35,31 @@ const menuData = [
 
 const orderTagInfos = [
   {
-    title: '待付款',
+    title: '我发布的',
     iconName: 'wallet',
     orderNum: 0,
     tabType: 5,
     status: 1,
   },
   {
-    title: '待发货',
+    title: '我卖出的',
     iconName: 'deliver',
     orderNum: 0,
     tabType: 10,
     status: 1,
   },
   {
-    title: '待收货',
+    title: '我买到的',
     iconName: 'package',
     orderNum: 0,
     tabType: 40,
     status: 1,
   },
   {
-    title: '待评价',
+    title: '心愿单',
     iconName: 'comment',
     orderNum: 0,
     tabType: 60,
-    status: 1,
-  },
-  {
-    title: '退款/售后',
-    iconName: 'exchang',
-    orderNum: 0,
-    tabType: 0,
     status: 1,
   },
 ];
@@ -99,6 +86,23 @@ Page({
     this.getVersionInfo();
   },
 
+
+
+  myputout: function() {
+    wx.navigateTo({url:'/pages/goods/list/index'});
+  },
+   myselled: function() {
+    wx.navigateTo({url:'/pages/goods/list/index'});
+  }, 
+  iget: function() {
+    wx.navigateTo({url:'/pages/goods/list/index'});
+  }, 
+  mywant: function() {
+    wx.navigateTo({url:'/pages/cart/index'});
+  },
+
+
+  
   onShow() {
     this.getTabBar().init();
     this.init();
@@ -191,6 +195,20 @@ Page({
         break;
       }
     }
+  },
+
+  jumpNav(e) {
+    const status = e.detail.tabType;
+
+    if (status === 0) {
+      wx.navigateTo({ url: '/pages/order/after-service-list/index' });
+    } else {
+      wx.navigateTo({ url: `/pages/order/order-list/index?status=${status}` });
+    }
+  },
+
+  jumpAllOrder() {
+    wx.navigateTo({ url: '/pages/order/order-list/index' });
   },
 
   openMakePhone() {

@@ -1,40 +1,40 @@
-<t-user-center-card
-  userInfo="{{userInfo}}"
-  isPhoneHide="{{true}}"
-  name-class="custom-name-class"
-  phone-class="custom-phone-class"
-  avatar-class="customer-avatar-class"
-  currAuthStep="{{currAuthStep}}"
-  bind:gotoUserEditPage="gotoUserEditPage"
-/>
-<view class="content-wrapper">
-  <view class="order-group-wrapper">
-    <t-order-group orderTagInfos="{{orderTagInfos}}" bind:onClickTop="jumpAllOrder" bind:onClickItem="jumpNav" />
-  </view>
-  <view wx:for="{{menuData}}" wx:key="item" class="cell-box">
-    <t-cell-group>
-      <t-cell
-        wx:for="{{item}}"
-        wx:for-item="xitem"
-        wx:for-index="xindex"
-        wx:key="xindex"
-        title="{{xitem.title}}"
-        arrow="{{!xitem.icon}}"
-        note="{{xitem.tit}}"
-        data-type="{{xitem.type}}"
-        bordered="{{false}}"
-        bind:click="onClickCell"
-        t-class="t-cell-padding"
-        t-class-note="order-group-note"
-        t-class-left="order-group__left"
-      >
-        <t-icon name="{{xitem.icon}}" size="48rpx" slot="note" />
-      </t-cell>
-    </t-cell-group>
-  </view>
-</view>
-<view class="footer__version" wx:if="{{versionNo !== ''}}">当前版本 {{versionNo}}</view>
-<t-popup visible="{{showMakePhone}}" placement="bottom" bind:visible-change="closeMakePhone" data-index="2">
+<t-user-center-card style="height: 762rpx; display: inline-block; box-sizing: border-box; left: 0rpx; top: 0rpx; width: 750rpx" userInfo="{{userInfo}}" isPhoneHide="{{true}}" name-class="custom-name-class" phone-class="custom-phone-class" avatar-class="customer-avatar-class" currAuthStep="{{currAuthStep}}" bind:gotoUserEditPage="gotoUserEditPage" />
 
-</t-popup>
-<t-toast id="t-toast" />
+
+<view class="content-wrapper" style="height: -14rpx; display: block; box-sizing: border-box; left: -1rpx; top: 175rpx; width: 750rpx; position: relative">
+</view>
+<view class="order-group-wrapper" style="position: relative; left: 27rpx; top: -677rpx; width: 699rpx; height: 222rpx; border: 1px solid rgba(0, 0, 0, 1); background: rgba(229, 229, 229, 1); display: block; box-sizing: border-box; border-radius: 15px">
+
+
+  <view style="display: flex; flex-direction: row; height: 185rpx; padding: 10px; margin: 10px; width: 672rpx; box-sizing: border-box; position: relative; left: -8rpx; top: -3rpx">
+
+    <view style="background-color: rgba(229, 229, 229, 1); flex: 1">
+      <button class="mine-nouserinfo-avatar"  size="mini"  bindtap="myputout" style="width: 141rpx; height: 104rpx; display: inline-block; box-sizing: border-box; left: -1rpx; top: 0rpx; position: relative; color: rgba(229, 229, 229, 1)">
+        <image class="btnImg" src="https://s2.loli.net/2024/10/14/SUWNig2pJBk39fQ.png" style="width: 89rpx; display: inline-block; box-sizing: border-box; height: 95rpx"></image>
+      </button>
+      <text style="position: relative; left: 8rpx; top: -8rpx">我发布的</text>
+
+    </view>
+    <view style="background-color: rgba(229, 229, 229, 1); width: 158rpx; height: 147rpx; display: block; box-sizing: border-box">'
+      <button class="mine-nouserinfo-avatar" open-type="getUserInfo" size="mini"  bindtap="myselled" style="width: 174rpx; height: 120rpx; display: inline-block; box-sizing: border-box; left: -16rpx; top: -40rpx; position: relative; color: rgba(229, 229, 229, 1)">
+        <image class="btnImg" src="https://s2.loli.net/2024/10/14/qwdguQrm2JIGXij.png" style="width: 106rpx; display: inline-block; box-sizing: border-box; height: 97rpx"></image>
+      </button><text style="position: relative; left: 10rpx; top: -61rpx">我卖出的</text>
+
+
+    </view>
+    <view style="background-color: rgba(229, 229, 229, 1); width: 158rpx; height: 147rpx; display: block; box-sizing: border-box">
+      <button class="mine-nouserinfo-avatar" open-type="getUserInfo" size="mini"  bindtap="iget" style="width: 150rpx; height: 110rpx; display: inline-block; box-sizing: border-box; left: -12rpx; top: 0rpx; position: relative; color: rgba(229, 229, 229, 1)">
+        <image class="btnImg" src="https://s2.loli.net/2024/10/14/e3WXAybLczDNfdS.png" style="width: 106rpx; display: inline-block; box-sizing: border-box; height: 97rpx"></image>
+      </button>
+      <text style="position: relative; left: 16rpx; top: -12rpx">我买到的</text>
+    </view>
+    <view style="background-color:rgba(229, 229, 229, 1);flex:1;">
+      <button class="mine-nouserinfo-avatar" open-type="getUserInfo" size="mini"  bindtap="mywant" style="width: 141rpx; height: 110rpx; display: inline-block; box-sizing: border-box; left: 0rpx; top: -2rpx; position: relative; color: rgba(229, 229, 229, 1)">
+        <image class="btnImg" src="https://s2.loli.net/2024/10/14/KaXq5YHiObmkW4B.png" style="width: 106rpx; display: inline-block; box-sizing: border-box; height: 97rpx"></image>
+      </button>
+      <text style="position: relative; left: 34rpx; top: -10rpx">心愿单</text>
+    </view>
+  </view>
+
+</view>
+<image style="position: relative; left: 68rpx; top: -575rpx; width: 614rpx; height: 529rpx; display: inline-block; box-sizing: border-box" src="https://img.js.design/assets/img/66f14eebb50663ba27e6e768.gif#ab84b85d8c847ff5ee06268d834bc5fd" />
