@@ -19,7 +19,6 @@ Page({
     myLoadStatus: 0,
     spuId: '1060004',
     commentLevel: '',
-    hasImage: '',
     commentType: '',
     totalCount: 0,
     countObj: {
@@ -60,7 +59,7 @@ Page({
     } catch (error) {}
   },
   generalQueryData(reset) {
-    const { hasImage, pageNum, pageSize, spuId, commentLevel } = this.data;
+    const { pageNum, pageSize, spuId, commentLevel } = this.data;
     const params = {
       pageNum: 1,
       pageSize: 30,
@@ -74,11 +73,6 @@ Page({
       Number(commentLevel) === 1
     ) {
       params.queryParameter.commentLevel = Number(commentLevel);
-    }
-    if (hasImage && hasImage === '1') {
-      params.queryParameter.hasImage = true;
-    } else {
-      delete params.queryParameter.hasImage;
     }
     // 重置请求
     if (reset) return params;
@@ -154,60 +148,16 @@ Page({
     return array;
   },
   getComments(options) {
-    const { commentLevel = -1, spuId, hasImage = '' } = options;
+    const { commentLevel = -1, spuId } = options;
     if (commentLevel !== -1) {
       this.setData({
         commentLevel: commentLevel,
       });
     }
     this.setData({
-      hasImage: hasImage,
-      commentType: hasImage ? '4' : '',
       spuId: spuId,
     });
     this.init(true);
-  },
-  changeTag(e) {
-    var { commenttype } = e.currentTarget.dataset;
-    var { commentType } = this.data;
-    if (commentType === commenttype) return;
-    this.setData({
-      loadMoreStatus: 0,
-      commentList: [],
-      total: 0,
-      myTotal: 0,
-      myPageNum: 1,
-      pageNum: 1,
-    });
-    if (commenttype === '' || commenttype === '5') {
-      this.setData({
-        hasImage: '',
-        commentLevel: '',
-      });
-    } else if (commenttype === '4') {
-      this.setData({
-        hasImage: '1',
-        commentLevel: '',
-      });
-    } else {
-      this.setData({
-        hasImage: '',
-        commentLevel: commenttype,
-      });
-    }
-    if (commenttype === '5') {
-      this.setData({
-        myLoadStatus: 1,
-        commentType: commenttype,
-      });
-      this.getMyCommentsList();
-    } else {
-      this.setData({
-        myLoadStatus: 0,
-        commentType: commenttype,
-      });
-      this.init(true);
-    }
   },
   onReachBottom() {
     const { total = 0, commentList } = this.data;

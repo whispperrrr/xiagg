@@ -13,14 +13,10 @@ Component({
         this.genIndependentID(id);
       },
     },
-    thresholds: {
-      type: Array,
-      value: [],
-    },
   },
 
   data: {
-    independentID: '',
+    independentID: '', //在组件内部或与外部交互时作为唯一标识
   },
 
   lifetimes: {
@@ -31,13 +27,9 @@ Component({
 
   methods: {
     onClickGoods(e) {
+      console.log(e);
       const { index } = e.currentTarget.dataset;
       this.triggerEvent('click', { ...e.detail, index });
-    },
-
-    onClickGoodsThumb(e) {
-      const { index } = e.currentTarget.dataset;
-      this.triggerEvent('thumb', { ...e.detail, index });
     },
 
     init() {

@@ -3,11 +3,10 @@
 		<goods-card
 		  id="{{independentID}}-gd-{{index}}"
 		  data="{{item}}"
-		  currency="{{item.currency || '¥'}}"
-		  thresholds="{{thresholds}}"
+		  currency="¥"
+			data-index="{{index}}"
+			
 		  class="goods-card-inside"
-		  data-index="{{index}}"
-		  bind:thumb="onClickGoodsThumb"
 		  bind:click="onClickGoods"
 		/>
 	</block>

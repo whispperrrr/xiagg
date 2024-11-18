@@ -6,7 +6,7 @@ function mockFetchComments(parmas) {
   const { getGoodsAllComments } = require('../../model/comments');
   return delay().then(() => getGoodsAllComments(parmas));
 }
-
+ 
 /** 获取商品评论 */
 export function fetchComments(parmas) {
   if (config.useMock) {

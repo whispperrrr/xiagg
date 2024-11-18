@@ -4,14 +4,6 @@ Component({
     multipleSlots: true,
   },
   properties: {
-    goodsDetailInfo: {
-      type: String,
-      value: '',
-    },
-    sellerReply: {
-      type: String,
-      value: '',
-    },
     userHeadUrl: {
       type: String,
       value: '',
