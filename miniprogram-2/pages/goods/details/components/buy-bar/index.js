@@ -42,7 +42,7 @@ Component({
 
     gotoWishlist() {
       wx.navigateTo({
-        url: '#', //**
+        url: '/pages/cart/index', 
       })
     },
 
