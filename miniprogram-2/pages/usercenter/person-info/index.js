@@ -3,6 +3,11 @@ import { phoneEncryption } from '../../../utils/util';
 import Toast from 'tdesign-miniprogram/toast/index';
 
 Page({
+  onNavigateToPage2: function() {
+    wx.navigateTo({
+      url: '/pages/login/login' 
+    });
+  },
   data: {
     personInfo: {
       avatarUrl: '',

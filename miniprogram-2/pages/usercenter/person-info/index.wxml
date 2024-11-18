@@ -41,7 +41,12 @@
   </t-cell-group>
 </view>
 <view class="person-info__wrapper">
-  <view class="person-info__btn" bind:tap="openUnbindConfirm"> 切换账号登录 </view>
+  <view class="person-info__btn" bind:tap="openUnbindConfirm" style="width: 687rpx; height: 125rpx; display: flex; box-sizing: border-box"> 
+  
+    <view class="container" style="width: 293rpx; height: 127rpx; display: block; box-sizing: border-box">
+  <button bindtap="onNavigateToPage2" style="position: relative; left: -214rpx; top: -32rpx; width: 643rpx; height: 114rpx; display: inline-flex; box-sizing: border-box">切换登录</button>
+</view>
+    </view>
 </view>
 <t-select-picker
   show="{{typeVisible}}"

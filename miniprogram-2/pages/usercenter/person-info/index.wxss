@@ -10,7 +10,6 @@ page view {
 
 .person-info__btn {
   width: 100%;
-  border: 2rpx solid #ddd;
   border-radius: 48rpx;
   padding: 18rpx 0;
   display: flex;
@@ -42,4 +41,18 @@ page view {
 }
 .person-info .t-cell-class {
   height: 112rpx;
+}
+.container {
+  padding: 20px;
+}
+
+button {
+  width: 100%;
+  border: 2rpx solid #ddd;
+  border-radius: 48rpx;
+  padding: 18rpx 0;
+  display: flex;
+  align-self: center;
+  justify-content: center;
+  align-items: center;
 }
