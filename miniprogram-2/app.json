@@ -24,31 +24,38 @@
     "pages/seller/seller"
   ],
   "tabBar": {
-    "custom": true,
+    "custom": false,
     "backgroundColor": "#ffffff",
     "borderStyle": "black",
     "list": [
       {
         "pagePath": "pages/home/home",
-        "text": "首页"
+        "text": "首页",
+        "iconPath": "images1/icon/find.png",
+        "selectedIconPath": "images1/icon/findafter.png"
       },
       {
         "pagePath": "pages/goods/category/index",
-        "text": "分类"
+        "text": "分类",
+        "iconPath": "images1/icon/sort.png",
+        "selectedIconPath": "images1/icon/sortafter.png"
       },
       {
         "pagePath": "pages/sell/sell",
-        "text": "卖",
-        "iconPath": "images1/image_sell/sold.png"
+        "iconPath": "images1/icon/sold.png",
+        "selectedIconPath": "images1/icon/sold.png"
       },
       {
         "pagePath": "pages/newmessages/newmessages",
         "text": "信息",
-        "iconPath": "images1/image_newmessages/talk.png"
+        "iconPath": "images1/icon/talk.png",
+        "selectedIconPath": "images1/icon/talkafter.png"
       },
       {
         "pagePath": "pages/usercenter/index",
-        "text": "我的"
+        "text": "我的",
+        "iconPath": "images1/icon/my.png",
+        "selectedIconPath": "images1/icon/myafter.png"
       }
     ]
   },
