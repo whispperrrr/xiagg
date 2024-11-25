@@ -38,11 +38,13 @@
       },
       {
         "pagePath": "pages/sell/sell",
-        "text": "卖"
+        "text": "卖",
+        "iconPath": "images1/image_sell/sold.png"
       },
       {
         "pagePath": "pages/newmessages/newmessages",
-        "text": "信息"
+        "text": "信息",
+        "iconPath": "images1/image_newmessages/talk.png"
       },
       {
         "pagePath": "pages/usercenter/index",
