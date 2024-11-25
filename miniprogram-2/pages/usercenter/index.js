@@ -89,13 +89,13 @@ Page({
 
 
   myputout: function() {
-    wx.navigateTo({url:'/pages/goods/list/index'});
+    wx.navigateTo({url:'/pages/usercenter/myposted/index'});
   },
    myselled: function() {
-    wx.navigateTo({url:'/pages/usercenter/mysold'});
+    wx.navigateTo({url:'/pages/usercenter/mysold/index'});
   }, 
   iget: function() {
-    wx.navigateTo({url:'/pages/goods/list/index'});
+    wx.navigateTo({url:'/pages/usercenter/mybrought/index'});
   }, 
   mywant: function() {
     wx.navigateTo({url:'/pages/cart/index'});
