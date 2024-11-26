@@ -5,8 +5,27 @@
       <image src="/assets/notification.png" class="icon"></image>
     </view>
     <view class="message-content">
-      <text class="message-title">通知消息</text>
-      <text class="message-detail">暂无通知消息</text>
+      <text class="message-title">系统消息</text>
+      <text class="message-detail">您有一条新的系统通知，请及时查看。</text>
+      <text class="message-detail">发布时间：2024年11月26日 09:00</text>
+      <view class="message-action">
+        <button class="btn-view" style="background-color: #969796; color: white;" bindtap="viewMessage">查看详情</button>
+      </view>
+    </view>
+  </view>
+
+  <!-- 私聊信息 -->
+  <view class="message-item">
+    <view class="message-icon" style="background-color: #3188eb;">
+      <image src="/assets/chat.png" class="icon"></image>
+    </view>
+    <view class="message-content">
+      <text class="message-title">私聊信息</text>
+      <text class="message-detail">您有一条新的私聊消息，请及时查看。</text>
+      <text class="message-detail">发送时间：2024年11月27日 10:30</text>
+      <view class="message-action">
+        <button class="btn-view" style="background-color: #969796; color: white;" bindtap="viewChat">查看私聊</button>
+      </view>
     </view>
   </view>
 </view>
