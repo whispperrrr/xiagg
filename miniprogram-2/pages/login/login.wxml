@@ -3,30 +3,33 @@
 <block wx:if="{{currAuthStep === AuthStepType.ONE}}">
     <view>
   <image style="position: relative; left: 265rpx; top: 84rpx; width: 175rpx; height: 174rpx; border: 1px solid rgba(0, 0, 0, 1); box-shadow: 0px 2px 4px  rgba(0, 0, 0, 0.25), 0px 2px 4px  rgba(0, 0, 0, 0.25); opacity: 1; display: inline-block; box-sizing: border-box" src="https://img.js.design/assets/img/66ec0afeead3259ee9683eda.jpg#c9d79838a519199e091d62d0f2577ca3" /></view>
-    <view style="width: 750rpx; display: block; box-sizing: border-box; font-size: 42rpx; position: relative; left: 1rpx; top: 0rpx; height: 1202rpx;">
-      <input style="background: rgba(255, 255, 255, 1); box-shadow: 0px 8px 16px 2px rgba(119, 154, 241, 0.2); font-size: larger; height: 127rpx; display: grid; box-sizing: border-box; left: 95rpx; top: 595rpx; width: 552rpx; position: relative" auto-focus placeholder=" 请输入您的密码" />
+    <view style="width: 750rpx; display: block; box-sizing: border-box; font-size: 42rpx; position: relative; left: 1rpx; top: 114rpx; height: 1202rpx; background: rgba(255, 255, 255, 1)">
+      
       <t-tabs defaultValue="{{0}}">
         <t-tab-panel style="font-size: 36rpx;" label="登录" value="0">
-          <text style="position: fixed; left: 42rpx; top: 472rpx; width: 208rpx; height: 83rpx; display: block; box-sizing: border-box; font-size: x-large">欢迎回来</ text>
-            <text style="position: fixed; left: 64rpx; top: 554rpx; width: 414rpx; height: 83rpx; display: block; box-sizing: border-box; font-size: xx-large; font-weight: bold">亲爱的xmuer</text>
-       
-            <button type="primary" style="position: fixed; left: 165rpx; top: 1156rpx; width: 418rpx; height: 87rpx; display: block; box-sizing: border-box; background: rgba(255, 255, 255, 1); border: 1px solid rgba(0, 0, 0, 1); opacity: 1; color: rgba(0, 0, 0, 1)">登录</button>
-    
-        </t-tab-panel>
+          <text style="position: fixed; left: 131rpx; top: 458rpx; width: 208rpx; height: 83rpx; display: block; box-sizing: border-box; font-size: x-large">欢迎回来</text>
+          <text style="position: fixed; left: 62rpx; top: 541rpx; width: 414rpx; height: 83rpx; display: block; box-sizing: border-box; font-size: xx-large; font-weight: bold">亲爱的xmuer</text>
+        
+         <image style="position: relative; left: 504rpx; top: 0rpx; width: 200rpx; height: 200rpx; display: inline-block; box-sizing: border-box; border-radius: 50%" src="https://img.js.design/assets/smartFill/img341164da748e08.jpg" />
+        
+          <input style="background: rgba(255, 255, 255, 1); box-shadow: 0px 8px 16px 2px rgba(119, 154, 241, 0.2); font-size: larger; height: 127rpx; display: grid; box-sizing: border-box; left: 97rpx; top: 712rpx; width: 552rpx; position: fixed" auto-focus placeholder=" 请输入您的密码" />
+
+          <button style="width: 243rpx; height: 50rpx; display: block; box-sizing: border-box; left: 62rpx; top: 875rpx; position: fixed; font: icon; background: rgba(255, 255, 255, 1); z-index: 1000; color: black">忘记密码</button>
+          <button style="width: 243rpx; height: 50rpx; display: block; box-sizing: border-box; left: 62rpx; top: 925rpx; position: fixed; font: icon; background: rgba(255, 255, 255, 1);color: black;">这不是我</button>
+         <button  style="position: fixed; left: 164rpx; top: 1099rpx; width: 418rpx; height: 87rpx; display: block; box-sizing: border-box; background: rgba(255, 255, 255, 1); border: 1px solid rgba(0, 0, 0, 1); opacity: 1; color: rgba(0, 0, 0, 1)">登录</button>
+
+          </t-tab-panel>
     
         <t-tab-panel label="注册" value="1">
-          <input style="position: relative; font-size: 36rpx;height: 106rpx; display: inline-block; box-sizing: border-box; left: 94rpx; top: 59rpx; width: 544rpx" auto-focus placeholder="请输入您的学号" />
+          <input style="position: relative; font-size: 36rpx;height: 106rpx; display: inline-block; box-sizing: border-box; left: 94rpx; top: 59rpx; width: 544rpx;z-index: 1000;" auto-focus placeholder="请输入您的学号" />
     
-          <t-divider />
-    
-          <input style="position: relative; font-size: 36rpx; height: 106rpx; display: inline-block; box-sizing: border-box; left: 94rpx; top: 59rpx; width: 544rpx" auto-focus placeholder="请输入您的密码" />
-          <input style="position: relative; font-size: 36rpx; height: 106rpx; display: inline-block; box-sizing: border-box; left: 94rpx; top: 59rpx; width: 544rpx" auto-focus placeholder="再次确认您的密码" />
-    
+          <input style="position: relative; font-size: 36rpx; height: 106rpx; display: inline-block; box-sizing: border-box; left: 94rpx; top: 59rpx; width: 544rpx;z-index: 1000;" auto-focus placeholder="请输入您的密码" />
+          <input style="position: relative; font-size: 36rpx; height: 106rpx; display: inline-block; box-sizing: border-box; left: 94rpx; top: 59rpx; width: 544rpx;z-index: 1000;" auto-focus placeholder="再次确认您的密码" />
+          <button  style="position: fixed; left: 165rpx; top: 1099rpx; width: 418rpx; height: 87rpx; display: block; box-sizing: border-box; background: rgba(255, 255, 255, 1); border: 1px solid rgba(0, 0, 0, 1); opacity: 1; color: rgba(0, 0, 0, 1)">注册</button>
         </t-tab-panel>
       </t-tabs>
     
-      <button style="width: 243rpx; height: 50rpx; display: table; box-sizing: border-box; left: -281rpx; top: 562rpx; position: relative; font: icon; background: rgba(255, 255, 255, 1); ">忘记密码</button>
-      <button style="width: 243rpx; height: 50rpx; display: block; box-sizing: border-box; left: -282rpx; top: 562rpx; position: relative; font: icon; background: rgba(255, 255, 255, 1); ">这不是我</button>
+     
     
     
     
@@ -34,7 +37,6 @@
     
     
     
-      <image style="position: relative; left: 487rpx; top: -43rpx; width: 200rpx; height: 200rpx; display: inline-block; box-sizing: border-box; border-radius: 50%" src="https://img.js.design/assets/smartFill/img341164da748e08.jpg" />
     
 </view>
   </block>
