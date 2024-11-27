@@ -1,7 +1,10 @@
 
 <view class="startcontainer" bindtap="goHome">
-  <image class="logo full-screen" src="/images1/image_start/1.png" style="width: 750rpx; height: 1450rpx; display: block; box-sizing: border-box; left: 0rpx; top: 0rpx"> 
-  
+  <text style="position: fixed; left: 169rpx; top: 1218rpx; width: 414rpx; height: 83rpx; display: block; box-sizing: border-box; font-size: 35rpx; font-weight: bold; color: rgba(166, 166, 166, 1); text-align: center; z-index: 1000">点击任意处继续</text>
+  <text style="position: fixed; left: 273rpx; top: 462rpx; width: 439rpx; height: 83rpx; display: block; box-sizing: border-box; font-size: 35rpx; font-weight: bold; color: rgba(0,0, 0, 1); text-align: center; z-index: 1000">厦门大学学生二手交易平台</text>
+  <image class="logo full-screen" src="https://img.js.design/assets/img/6745e543e0697a51fcfe576c.png#875d6729758fd6c431fee7e6883f4308" style="width: 750rpx; height: 1450rpx; display: block; box-sizing: border-box; left: 0rpx; top: 0rpx"> 
+  </image>
+  <image src="/images1/image_start/厦逛逛@3x.png" style="display: block; z-index: 2000; width: 414rpx; height: 174rpx; box-sizing: border-box; position: relative; left: 128rpx; top: 289rpx"> 
   </image>
   <!-- 全屏触摸层 -->
   <view class="full-screen" bindtap="goHome"></view>
