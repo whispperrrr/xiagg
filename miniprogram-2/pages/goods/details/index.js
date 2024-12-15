@@ -68,7 +68,7 @@ Page({
             return {
               goodsSpu: item.spuId,
               userName: item.userName || '',
-              commentContent: item.commentContent || '用户未填写评价',
+              commentContent: item.commentContent || '暂无评价',
               userHeadUrl: item.userHeadUrl,
             };
           }),

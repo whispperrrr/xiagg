@@ -20,8 +20,8 @@
 
     </view>
 
-    <!-- 评价 -->
-    <view wx:if="{{ commentsStatistics.commentCount > 0 }}" class="comments-wrap">
+    <!-- 卖家 -->
+    <view class="comments-wrap">
 
       <view class="comments-head" bindtap="navToCommentsListPage">
         <view class="comments-title-wrap">

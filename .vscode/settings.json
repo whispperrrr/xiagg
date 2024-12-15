@@ -1,0 +1,8 @@
+{
+  "marscode.chatLanguage": "cn",
+  "miniprogram.miniprogramPath": "miniprogram-2",
+  "marscode.codeCompletionPro": {
+    "enableCodeCompletionPro": true
+  },
+  "marscode.enableInlineCommand": true
+}

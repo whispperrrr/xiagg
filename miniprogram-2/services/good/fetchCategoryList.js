@@ -4,7 +4,7 @@ import { config } from '../../config/index';
 function mockFetchGoodCategory() {
   const { delay } = require('../_utils/delay');
   const { getCategoryList } = require('../../model/category');
-  return delay().then(() => getCategoryList()); //延时执行getCategoryList
+  return delay().then(() => getCategoryList());
 }
 
 // 获取商品分类列表

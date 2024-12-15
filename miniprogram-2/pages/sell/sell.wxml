@@ -26,7 +26,6 @@
     <view class="wrapper">
       <scroll-view style="height:275rpx;" class="upload-container" scroll-y>  
         <t-upload
-          disabled
           media-type="{{['video','image']}}"
           files="{{originFiles}}"
           gridConfig="{{gridConfig}}"

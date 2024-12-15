@@ -4,7 +4,15 @@
     <view class="goodlist-search-section">
       <image class="back-arrow" src="/images1/image_sell/icon_arrow_back_black (1).png" bindtap="goback"></image>
       <view class="sousuokuang">
-        <t-search t-class-input-container="t-class__input-container-goodlist"  t-class-input="t-search__input-goodlist" value="{{searchValue}}" leftIcon="/images1/image_home/搜索@3x.png" placeholder="运动鞋" bind:submit="handleSubmit" focus></t-search>
+        <t-search 
+          t-class-input-container="t-class__input-container-goodlist"
+          t-class-input="t-search__input-goodlist"
+          value="{{searchValue}}"
+          leftIcon="/images1/image_home/搜索@3x.png"
+          placeholder="运动鞋"
+          bind:submit="handleSubmit" 
+          focus>
+        </t-search>
       </view>
     </view>
   </t-sticky>
@@ -18,7 +26,7 @@
     <!-- 商品列表 -->
     <goods-list
       wr-class="goods-list-container"
-      goodsList="{{goodsList}}"
+      goodsList="{{filteredGoodsList}}"
       bind:click="goodListClickHandle"
     />
   </view>
