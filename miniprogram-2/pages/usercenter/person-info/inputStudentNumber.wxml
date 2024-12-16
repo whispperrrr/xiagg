@@ -1,0 +1,16 @@
+<!--pages/usercenter/person-info/inputStudentNumber.wxml-->
+<view class="input-page" style="height: 454rpx; display: block; box-sizing: border-box">
+  <view class="input-wrapper" style="height: 100rpx; display: block; box-sizing: border-box">
+    <input style="width: 654rpx; display: block; box-sizing: border-box; height: 118rpx" 
+      type="text"
+      value="{{studentNumber}}"
+      placeholder="  请输入您的学号"
+      bindinput="onInputChange"
+      class="input-field"
+    />
+  </view>
+   <view class="btn-wrapper" style="width: 692rpx; height: 164rpx; display: flex; box-sizing: border-box; left: 40rpx; top: 180rpx">
+    <button bindtap="onSave" class="save-btn" style="position: relative; left: 0rpx; top: 32rpx">保存</button>
+    
+  </view>
+</view>

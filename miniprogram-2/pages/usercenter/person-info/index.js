@@ -14,6 +14,7 @@ Page({
       nickName: '',
       gender: 0,
       phoneNumber: '',
+      studentNumber: '',
     },
     showUnbindConfirm: false,
     pickerOptions: [
@@ -31,6 +32,47 @@ Page({
   },
   onLoad() {
     this.init();
+    const studentNumber = wx.getStorageSync('studentNumber');
+    if (studentNumber) {
+      this.setData({
+        'personInfo.studentNumber': studentNumber,
+      });
+    }
+  },
+  onLoad: function () {
+    this.loadPersonInfo();
+  },
+
+  // 页面显示时也加载数据，防止用户在输入学号后跳转回页面时没有更新
+  onShow: function () {
+    this.loadPersonInfo();
+  },
+
+  // 加载个人信息，包括学号
+  loadPersonInfo: function () {
+    const studentNumber = wx.getStorageSync('studentNumber');  // 获取存储的学号
+    if (studentNumber) {
+      this.setData({
+        'personInfo.studentNumber': studentNumber,  // 更新学号
+      });
+    }
+    const phoneNumber = wx.getStorageSync('phoneNumber');  // 获取存储的电话号码
+    if (phoneNumber) {
+      this.setData({
+        'personInfo.phoneNumber': phoneNumber,  // 更新电话号码
+      });
+    }
+  },
+  onClickCellForPhoneNumber: function () {
+    wx.navigateTo({
+      url: '/pages/usercenter/person-info/inputPhoneNumber',
+    });
+  },
+
+  onClickCellForStudentNumber: function () {
+    wx.navigateTo({
+      url: '/pages/usercenter/person-info/inputStudentNumber',
+    });
   },
   init() {
     this.fetchData();

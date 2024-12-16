@@ -30,11 +30,21 @@
     />
     <t-cell
       bordered="{{false}}"
-      title="手机号"
+      title="电话号码"
       arrow
-      note="{{personInfo.phoneNumber ? personInfo.phoneNumber : '去绑定手机号'}}"
+      note="{{personInfo.phoneNumber ? personInfo.phoneNumber : '去绑定电话号码'}}"
       data-type="phoneNumber"
-      bind:click="onClickCell"
+      bind:click="onClickCellForPhoneNumber"
+      t-class="t-cell-class"
+      t-class-left="order-group__left"
+    />
+    <t-cell
+      bordered="{{false}}"
+      title="学号"
+      arrow
+      note="{{personInfo.studentNumber ? personInfo.studentNumber : '去绑定学号'}}"
+      data-type="studentNumber"
+      bind:click="onClickCellForStudentNumber"
       t-class="t-cell-class"
       t-class-left="order-group__left"
     />

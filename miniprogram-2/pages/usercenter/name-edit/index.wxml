@@ -1,4 +1,5 @@
-<view class="name-edit">
+<view class="name-edit" ardstyle="position: relative; left: 65rpx; top: 36rpx" style="border-radius: 12rpx; position: relative; left: 65rpx; top: 74rpx">
+  <view class="input-container">
   <t-input
     borderless
     model:value="{{nameValue}}"
@@ -7,8 +8,9 @@
     clearable
     bind:clear="clearContent"
   />
+</view>
   <view class="name-edit__input--desc"> 最多可输入15个字 </view>
-  <view class="name-edit__wrapper">
-    <t-button block shape="round" disabled="{{!nameValue}}" bind:tap="onSubmit">保存</t-button>
+  <view class="name-edit__wrapper"  style="width: 692rpx; height: 164rpx; display: flex; position: relative; box-sizing: border-box; left: -35rpx; top: -180rpx">
+    <t-button  style="position: relative;width: 280px; height: 50px; display: block; box-sizing: border-box; background: rgba(255, 255, 255, 1); border: 1px solid rgba(0, 0, 0, 1); opacity: 1; color: rgba(0, 0, 0, 1); font-size: 50rpx; font-display: medium; text-align: center; line-height: 50px; border-radius: 10px" class="baocun" disabled="{{!nameValue}}" bind:tap="onSubmit">保存</t-button>
   </view>
 </view>

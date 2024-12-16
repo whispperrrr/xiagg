@@ -5,6 +5,8 @@
     "pages/login/login",
     "pages/usercenter/index",
     "pages/usercenter/person-info/index",
+    "pages/usercenter/person-info/inputStudentNumber",
+    "pages/usercenter/person-info/inputPhoneNumber",
     "pages/usercenter/address/list/index",
     "pages/usercenter/address/edit/index",
     "pages/usercenter/mysold/index",
