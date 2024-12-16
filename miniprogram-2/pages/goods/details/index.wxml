@@ -68,7 +68,11 @@
 
   <!-- buy-bar -->
   <view class="goods-bottom-operation">
-    <buy-bar soldout="{{soldout}}" class="goods-details-card" />
+    <buy-bar 
+      soldout="{{soldout}}" 
+      details="{{details}}"
+      class="goods-details-card" 
+    />
   </view>
 
 </view>
