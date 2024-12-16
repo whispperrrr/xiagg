@@ -1,13 +1,23 @@
-:host {
-  padding-bottom: 100rpx;
+.cart-page-contianer{
+  padding: 40rpx;
 }
 
-.gap {
-  height: 100rpx;
-  width: 100%;
+.good-cart{
+  display: flex;
+  padding: 10rpx;
+  border: 1rpx solid darkgray;
+  border-radius: 20rpx;
+  overflow: hidden;
 }
 
-.t-button {
-  --td-button-default-color: #000;
-  --td-button-primary-text-color: #fa4126;
+.good-img{
+  width: 200rpx;
+  height: 200rpx;
+  border-radius: 10rpx;
+}
+
+.good-title{
+  font-size: 32rpx;
+  font-weight: 400;
+  margin: 20rpx 0 0 20rpx;
 }
