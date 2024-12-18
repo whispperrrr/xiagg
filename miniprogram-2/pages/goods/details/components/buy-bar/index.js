@@ -46,18 +46,9 @@ Component({
     },
 
     toAddWishList(e) {
-      console.log("加入心愿单");
-      
-      // 将 goodsList 存储在本地缓存中
-      const goodsList = JSON.stringify(this.properties.details);
-      wx.setStorageSync('goodsList', goodsList);
-      wx.showToast({
-        title: '已加入心愿单',
-        icon: 'none'
-      });
-      this.triggerEvent('toAddWishList', { details }); 
+      // 触发父组件的事件处理函数
+      this.triggerEvent('toAddWishList');
     },
-
 
     toBuyNow(e) {
       wx.showModal({
