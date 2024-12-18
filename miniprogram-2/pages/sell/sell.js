@@ -86,6 +86,14 @@ Page({
       return;
     }
 
+    else{
+      wx.showToast({
+        title: '上传成功',
+        icon: 'none'
+      });
+      return;
+    }
+
     wx.request({
       url: '#', //***接口
       method: 'POST',
