@@ -56,11 +56,16 @@ Component({
     },
 
     toBuyNow(e) {
-      const {
-        isStock
-      } = this.properties;
-      if (!isStock) return;
-      this.triggerEvent('toBuyNow', e);
+      wx.showModal({
+        title: '提示',
+        content: '请在卖家详情页查看卖家联系方式，自行沟通购买',
+        showCancel: false,
+        success: function(res) {
+          if (res.confirm) {
+            console.log('用户点击确定');
+          }
+        }
+      });
     },
 
   },

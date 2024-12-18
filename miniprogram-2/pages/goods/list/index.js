@@ -32,7 +32,7 @@ Page({
     } = e.detail;
     const {
       spuId
-    } = this.data.goodsList[index];
+    } = this.data.filteredGoodsList[index];
     wx.navigateTo({
       url: `/pages/goods/details/index?spuId=${spuId}`,
     });
@@ -41,7 +41,7 @@ Page({
   generalQueryData(reset = false) { //用于生成查询商品列表时所需的参数
     const {
       keywords
-    } = this.data; 
+    } = this.data;
     const {
       pageNum,
       pageSize
@@ -55,8 +55,10 @@ Page({
     return params;
   }, //generalQueryData
 
-  init: async function(reset = true) { //初始化数据，包括获取商品列表和筛选商品列表
-    const { loadMoreStatus } = this.data;
+  init: async function (reset = true) { //初始化数据，包括获取商品列表和筛选商品列表
+    const {
+      loadMoreStatus
+    } = this.data;
     const params = this.generalQueryData(reset);
     if (loadMoreStatus !== 0) return;
     this.setData({
@@ -65,10 +67,13 @@ Page({
     });
     try {
       const result = await fetchGoodsList(params); //调用获取商品列表的方法
-      const code = 'Success'; 
+      const code = 'Success';
       const data = result;
       if (code.toUpperCase() === 'SUCCESS') {
-        const { spuList, totalCount = 0 } = data; //从data对象中提取spuList和totalCount属性
+        const {
+          spuList,
+          totalCount = 0
+        } = data; //从data对象中提取spuList和totalCount属性
         if (totalCount === 0) { //没有数据，直接返回
           this.total = totalCount;
           this.setData({
@@ -80,7 +85,7 @@ Page({
           return;
         }
 
-        const _goodsList = reset ? spuList : this.data.goodsList.concat(spuList); 
+        const _goodsList = reset ? spuList : this.data.goodsList.concat(spuList);
         const _loadMoreStatus = _goodsList.length === totalCount ? 2 : 0;
         this.pageNum = params.pageNum || 1;
         this.total = totalCount;
@@ -88,7 +93,7 @@ Page({
           goodsList: _goodsList,
           loadMoreStatus: _loadMoreStatus,
         });
-  
+
         //在这里调用筛选方法
         this.filterGoodsByCategory(this.data.categoryId);
       } else {
@@ -110,7 +115,7 @@ Page({
     });
   },
 
-  onLoad: function(options) { 
+  onLoad: function (options) {
     //从options中获取categoryId
     console.log(options.categoryId);
     const categoryId = options.categoryId || '';
@@ -136,7 +141,7 @@ Page({
     this.init(false);
   },
 
-  filterGoodsByCategory: function(categoryId) { //根据categoryId筛选商品
+  filterGoodsByCategory: function (categoryId) { //根据categoryId筛选商品
     if (!categoryId) {
       // 如果没有选择分类，则显示所有商品
       this.setData({
@@ -163,5 +168,5 @@ Page({
     this.init(true); // 重新加载商品列表
   },
 
-  
+
 });
