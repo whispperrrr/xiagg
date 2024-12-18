@@ -87,10 +87,9 @@
   justify-content: flex-start;
   align-items: flex-start;
   margin: 24rpx 0 0 5rpx;
-  
 }
 
-.search-item-history,.search-item-hot {
+.search-item-history {
   height: 60rpx;
   border-radius: 40rpx;
   background: rgba(255, 255, 255, 1);
@@ -106,28 +105,9 @@
   margin: 0 24rpx 24rpx 0;
 }
 
-.search-item-hot{
-  border: none;
-  background: linear-gradient(135deg, rgba(90, 234, 70, 1) 0%, rgba(255, 255, 255, 1) 0%);
-  box-shadow: 0px 8rpx 10rpx  rgba(85, 251, 117, 0.5);
-}
-
-
-
 .search-page .hover-history-item {
   position: relative;
   top: 3rpx;
   left: 3rpx;
   box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.1) inset;
-}
-
-.hover-hot-item{
-  position: relative;
-  top: 3rpx;
-  left: 3rpx;
-  box-shadow: 0px 8rpx 10rpx  rgba(0, 70, 14, 0.521);
-}
-
-.add-notes__confirm {
-  color: #fa4126 !important;
 }

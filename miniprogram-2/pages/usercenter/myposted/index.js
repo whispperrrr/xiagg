@@ -1,66 +1,99 @@
 // pages/usercenter/myposted/index.js
+import { genGood, deleteUserGood } from '../../../model/good';
+import Toast from 'tdesign-miniprogram/toast/index';
+
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
-
+    goodsList: [], // 商品列表
+    loading: false, // 是否正在加载
   },
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad(options) {
-
+  onLoad() {
+    this.loadGoodsList();
   },
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
   onShow() {
-
+    // 每次显示页面时重新加载列表，以获取最新数据
+    this.loadGoodsList();
   },
 
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide() {
+  // 加载商品列表
+  loadGoodsList() {
+    this.setData({ loading: true });
 
+    try {
+      // 获取用户发布的商品
+      const userGoods = wx.getStorageSync('userGoods') || [];
+      
+      this.setData({
+        goodsList: userGoods,
+        loading: false
+      });
+
+    } catch (error) {
+      console.error('加载商品列表失败:', error);
+      this.setData({ loading: false });
+      Toast({
+        context: this,
+        selector: '#t-toast',
+        message: '加载失败',
+        theme: 'error',
+      });
+    }
   },
 
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload() {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
+  // 下拉刷新
   onPullDownRefresh() {
-
+    this.loadGoodsList();
+    wx.stopPullDownRefresh();
   },
 
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom() {
-
+  // 跳转到商品详情
+  gotoDetail(e) {
+    const { spuId } = e.currentTarget.dataset;
+    wx.navigateTo({
+      url: `/pages/goods/details/index?spuId=${spuId}`
+    });
   },
 
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage() {
+  // 删除商品
+  deleteGoods(e) {
+    const { spuId } = e.currentTarget.dataset;
+    wx.showModal({
+      title: '提示',
+      content: '确定要删除这个商品吗？',
+      success: (res) => {
+        if (res.confirm) {
+          if (deleteUserGood(spuId)) {
+            // 重新加载列表
+            this.loadGoodsList();
+            
+            Toast({
+              context: this,
+              selector: '#t-toast',
+              message: '删除成功',
+              theme: 'success',
+            });
+          } else {
+            Toast({
+              context: this,
+              selector: '#t-toast',
+              message: '删除失败',
+              theme: 'error',
+            });
+          }
+        }
+      }
+    });
+  },
 
+  // 跳转到发布页面
+  gotoPost() {
+    // 添加短暂延迟，让按钮动画效果更明显
+    setTimeout(() => {
+      wx.switchTab({
+        url: '/pages/sell/sell'
+      });
+    }, 150);
   }
-})
+});

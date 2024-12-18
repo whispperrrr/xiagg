@@ -5,115 +5,81 @@ import {
 
 Page({
   data: {
-    historyWords: [],
-    popularWords: [],
     searchValue: '',
-    dialog: {
-      title: '确认删除当前历史记录',
-      showCancelButton: true,
-      message: '',
-    },
-    dialogShow: false,
+    historyWords: [],
   },
 
-  deleteType: 0,
-  deleteIndex: '',
-
-  onShow() {
-    this.queryHistory();
-    this.queryPopular();
+  onLoad() {
+    this.loadHistoryWords();
   },
 
-  async queryHistory() {
-    try {
-      const data = await getSearchHistory();
-      const code = 'Success';
-      if (String(code).toUpperCase() === 'SUCCESS') {
-        const { historyWords = [] } = data;
-        this.setData({
-          historyWords,
-        });
-      }
-    } catch (error) {
-      console.error(error);
-    }
-  },
-
-  async queryPopular() {
-    try {
-      const data = await getSearchPopular();
-      const code = 'Success';
-      if (String(code).toUpperCase() === 'SUCCESS') {
-        const { popularWords = [] } = data;
-        this.setData({
-          popularWords,
-        });
-      }
-    } catch (error) {
-      console.error(error);
-    }
-  },
-
-  confirm() {
-    const { historyWords } = this.data;
-    const { deleteType, deleteIndex } = this;
-    historyWords.splice(deleteIndex, 1);
-    if (deleteType === 0) {
-      this.setData({
-        historyWords,
-        dialogShow: false,
-      });
-    } else {
-      this.setData({ historyWords: [], dialogShow: false });
-    }
-  },
-
-  close() {
-    this.setData({ dialogShow: false });
-  },
-
-  handleClearHistory() {
-    const { dialog } = this.data;
-    this.deleteType = 1;
+  loadHistoryWords() {
+    const history = wx.getStorageSync('searchHistory') || [];
     this.setData({
-      dialog: {
-        ...dialog,
-        message: '确认删除所有历史记录',
-      },
-      dialogShow: true,
+      historyWords: history
     });
   },
 
-  deleteCurr(e) {
-    const { index } = e.currentTarget.dataset;
-    const { dialog } = this.data;
-    this.deleteIndex = index;
+  saveHistoryWords(keyword) {
+    let history = wx.getStorageSync('searchHistory') || [];
+    
+    // 如果已经存在相同的关键词，先删除旧的
+    history = history.filter(item => item !== keyword);
+    
+    // 将新的关键词添加到开头
+    history.unshift(keyword);
+    
+    // 只保留最近的10条记录
+    if (history.length > 10) {
+      history = history.slice(0, 10);
+    }
+    
+    // 保存到本地存储
+    wx.setStorageSync('searchHistory', history);
+    
+    // 更新页面显示
     this.setData({
-      dialog: {
-        ...dialog,
-        message: '确认删除当前历史记录',
-        deleteType: 0,
-      },
-      dialogShow: true,
+      historyWords: history
     });
   },
 
-  handleHistoryTap(e) {
-    const { historyWords } = this.data;
-    const { dataset } = e.currentTarget;
-    const _searchValue = historyWords[dataset.index || 0] || '';
-    if (_searchValue) {
-      wx.navigateTo({
-        url: `/pages/goods/result/index?searchValue=${_searchValue}`,
-      });
+  clearHistory() {
+    wx.showModal({
+      title: '提示',
+      content: '确定要清空搜索历史吗？',
+      success: (res) => {
+        if (res.confirm) {
+          wx.removeStorageSync('searchHistory');
+          this.setData({
+            historyWords: []
+          });
+        }
+      }
+    });
+  },
+
+  onHistoryItemClick(e) {
+    const keyword = e.currentTarget.dataset.word;
+    this.goToSearchResult(keyword);
+  },
+
+  onInput(e) {
+    this.setData({
+      searchValue: e.detail.value
+    });
+  },
+
+  onSearch() {
+    const keyword = this.data.searchValue.trim();
+    if (keyword) {
+      this.saveHistoryWords(keyword);
+      this.goToSearchResult(keyword);
     }
   },
 
-  handleSubmit(e) {
-    const { value } = e.detail.value;
-    if (value.length === 0) return;
+  goToSearchResult(keyword) {
     wx.navigateTo({
-      url: `/pages/goods/result/index?searchValue=${value}`,
+      url: `/pages/goods/list/index?keyword=${encodeURIComponent(keyword)}`
     });
-  },
+  }
 });

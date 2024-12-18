@@ -5,13 +5,14 @@
       t-class-input-container="t-class__input-container"
       t-class-input="t-search__input"
       value="{{searchValue}}"
-      leftIcon=""
       placeholder="运动鞋"
-      bind:submit="handleSubmit"
+      leftIcon="/images1/image_home/搜索@3x.png"
+      bind:submit="onSearch"
+      bind:change="onInput"
       focus
-    ></t-search>
+    />
     
-    <button class="search-button" bind:submit="handleSubmit">
+    <button class="search-button" bindtap="onSearch">
       <image src="/images1/image_home/搜索@3x.png" class="search-icon" />
     </button>
   </view>
@@ -21,7 +22,7 @@
     <view class="history-wrap">
       <view class="search-header">
         <text class="search-title">历史搜索</text>
-        <text class="search-clear" bind:tap="handleClearHistory">清除</text>
+        <text class="search-clear" bind:tap="clearHistory">清除</text>
       </view>
 
       <view class="search-content">
@@ -29,27 +30,8 @@
           class="search-item-history"
           hover-class="hover-history-item"
           wx:for="{{historyWords}}"
-          bind:tap="handleHistoryTap"
-          bindlongpress="deleteCurr"
-          data-index="{{index}}"
-          wx:key="*this"
-        >
-          {{item}}
-        </view>
-      </view>
-    </view>
-
-    <view class="popular-wrap">
-      <view class="search-header">
-        <text class="search-title">热门搜索</text>
-      </view>
-      <view class="search-content">
-        <view
-          class="search-item-hot"
-          hover-class="hover-hot-item"
-          wx:for="{{popularWords}}"
-          bind:tap="handleHistoryTap"
-          data-index="{{index}}"
+          bind:tap="onHistoryItemClick"
+          data-word="{{item}}"
           wx:key="*this"
         >
           {{item}}

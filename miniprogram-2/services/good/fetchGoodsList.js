@@ -14,13 +14,15 @@ function mockFetchGoodsList(params) {
   // 获取所有商品数据
   const allGoods = genGood();
   
-  // 根据分类ID筛选商品
+  // 根据分类ID和关键词筛选商品
   let filteredGoods = allGoods;
+
+  // 根据分类ID筛选
   if (params.categoryId) {
-    filteredGoods = allGoods.filter(item => item.categoryId === params.categoryId);
+    filteredGoods = filteredGoods.filter(item => item.categoryId === params.categoryId);
   }
 
-  // 根据关键词筛选商品
+  // 根据关键词筛选
   if (params.keyword) {
     const keyword = params.keyword.toLowerCase();
     filteredGoods = filteredGoods.filter(item => 

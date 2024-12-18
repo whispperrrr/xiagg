@@ -1,2 +1,39 @@
 <!--pages/usercenter/myposted/index.wxml-->
-<text>pages/usercenter/myposted/index.wxml</text>
+<view class="myposted-container">
+  <view class="goods-container">
+    <block wx:if="{{goodsList.length > 0}}">
+      <view class="goods-list">
+        <view class="goods-item" wx:for="{{goodsList}}" wx:key="spuId">
+          <view class="goods-item-info" bindtap="gotoDetail" data-spu-id="{{item.spuId}}">
+            <view class="goods-item-left">
+              <image class="goods-image" src="{{item.primaryImage}}" mode="aspectFill"></image>
+            </view>
+            <view class="goods-item-right">
+              <view class="goods-title">{{item.title}}</view>
+              <view class="goods-status {{item.isSoldOut ? 'sold-out' : ''}}">
+                {{item.isSoldOut ? '已售出' : '在售中'}}
+              </view>
+              <view class="goods-price">
+                <price wr-class="price-class" price="{{item.SalePrice}}" fill="{{true}}" decimalSmaller />
+              </view>
+            </view>
+            <view class="delete-btn" catchtap="deleteGoods" data-spu-id="{{item.spuId}}">
+              <image class="delete-icon" src="/images1/image_cart/删除.png"></image>
+            </view>
+          </view>
+        </view>
+      </view>
+    </block>
+    <block wx:else>
+      <view class="empty-wrapper">
+        <view class="empty-box">
+          <image class="empty-icon" src="/images1/image_usercenter/暂无发布.png"></image>
+          <view class="empty-text">暂无发布的商品</view>
+          <view class="post-btn" bindtap="gotoPost">去发布</view>
+        </view>
+      </view>
+    </block>
+  </view>
+</view>
+
+<t-toast id="t-toast" />
