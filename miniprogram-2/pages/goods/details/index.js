@@ -120,4 +120,68 @@ Page({
     this.getCommentsList(spuId);
     this.getCommentsStatistics(spuId);
   },
+
+  // 在商品详情页添加商品到购物车的方法
+  addToCart: function() {
+    // 等待商品详情加载完成
+    if (!this.data.details || !this.data.spuId) {
+      wx.showToast({
+        title: '商品信息加载中',
+        icon: 'none',
+        duration: 2000
+      });
+      return;
+    }
+
+    // 构建完整的商品对象
+    const good = {
+      spuId: this.data.spuId,
+      primaryImage: this.data.primaryImage, // 使用正确的图片字段
+      title: this.data.details.title,
+      price: this.data.SalePrice,
+      description: this.data.details.description,
+    };
+
+    console.log('要添加的商品信息：', good); // 调试日志
+
+    const goodsList = wx.getStorageSync('goodsList');
+    let currentList = [];
+    
+    try {
+      // 获取现有的商品列表
+      currentList = goodsList ? JSON.parse(goodsList) : [];
+      
+      // 检查商品是否已存在
+      const existingIndex = currentList.findIndex(item => item.spuId === good.spuId);
+      
+      if (existingIndex === -1) {
+        // 如果商品不存在，将新商品添加到现有列表中
+        currentList.push(good);
+        // 保存更新后的列表
+        wx.setStorageSync('goodsList', JSON.stringify(currentList));
+        
+        wx.showToast({
+          title: '添加成功',
+          icon: 'success',
+          duration: 2000
+        });
+      } else {
+        wx.showToast({
+          title: '商品已在心愿单中',
+          icon: 'none',
+          duration: 2000
+        });
+      }
+
+      console.log('当前心愿单商品列表：', currentList);
+      
+    } catch (e) {
+      console.error('处理心愿单数据失败:', e);
+      wx.showToast({
+        title: '添加失败',
+        icon: 'error',
+        duration: 2000
+      });
+    }
+  }
 });

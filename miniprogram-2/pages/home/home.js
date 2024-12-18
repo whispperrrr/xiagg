@@ -8,13 +8,25 @@ Page({
     //校区选择
     index: 0,
     regions: ['思明', '翔安', '漳州'],
+
+     // 商品数据按校区划分（模拟数据）
+  campusGoods: {
+    0: [], // 思明校区商品列表
+    1: [], // 翔安校区商品列表
+    2: [], // 漳州校区商品列表
+  }  
   },
 
   //校区选择
   bindPickerChange: function(e) {
-    this.setData({
-      index: e.detail.value
-    });
+    const selectedIndex = e.detail.value;  // 获取选择的校区索引
+  this.setData({
+    index: selectedIndex,  // 更新当前选择的校区
+    goodsList: [],  // 清空当前商品列表
+    goodsListLoadStatus: 1, // 设置加载状态为加载中
+  });
+
+  this.loadGoodsList();
   },
 
   //跳转到搜索页
@@ -78,20 +90,33 @@ Page({
       pageIndex = 0;
     }
 
+     // 根据当前选中的校区加载商品
+  const campusIndex = this.data.index;
+  const campusGoodsList = this.data.campusGoods[campusIndex];
+
+  if (campusGoodsList.length === 0) {
+    // 如果该校区商品为空，调用接口获取商品数据
     try {
       const nextList = await fetchGoodsList(pageIndex, pageSize);
       this.setData({
-        goodsList: fresh ? nextList : this.data.goodsList.concat(nextList),
-        goodsListLoadStatus: 0, //状态为0-未加载
+        ['campusGoods.' + campusIndex]: nextList,  // 将商品数据保存到对应的校区
+        goodsList: fresh ? nextList : this.data.goodsList.concat(nextList), // 更新商品列表
+        goodsListLoadStatus: 0, // 状态为0-加载完成
       });
 
       this.goodListPagination.index = pageIndex;
       this.goodListPagination.num = pageSize;
-    } catch (err) { 
-      this.setData({ goodsListLoadStatus: 2 }); //如果获取商品列表失败，状态为2-加载失败
+    } catch (err) {
+      this.setData({ goodsListLoadStatus: 2 }); // 加载失败
     }
-  },
-
+  } else {
+    // 如果该校区已经有商品数据，直接加载
+    this.setData({
+      goodsList: fresh ? campusGoodsList : this.data.goodsList.concat(campusGoodsList),
+      goodsListLoadStatus: 0, // 状态为0-加载完成
+    });
+  }
+},
   //跳转到商品详情页
   gotoGoodDetailPage(e) {
     const { index } = e.detail;  //获取点击事件传递的商品索引
