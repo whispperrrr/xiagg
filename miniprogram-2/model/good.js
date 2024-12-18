@@ -129,17 +129,131 @@ const allGoods = [{
       'https://cdn-we-retail.ym.tencent.com/tsr/goods/gh-2d.png',
     ],
   },
+  {
+    uid: '999999999',
+    spuId: '241120003',
+    categoryId: '302',
+
+    title: '美妆眼影盘 16色 全新未拆封',
+    primaryImage: 'https://p3-search.byteimg.com/img/labis/bb7491b0883f7fa25a6a6cfb3495c771~480x480.JPEG',
+    SalePrice: '2900',
+    isSoldOut: false,
+    isPutOnSale: 1,
+    description: [
+      'https://p3-search.byteimg.com/img/labis/2961145754e9044a3a499ad9daab251d~480x480.JPEG',
+      'https://p3-search.byteimg.com/img/labis/7829c88e0cd6f659ed7f8484a1794b4f~480x480.JPEG',
+    ],
+  },
+  {
+    uid: '101010101',
+    spuId: '241120004',
+    categoryId: '303',
+
+    title: '美妆蛋套装 3个装 粉色',
+    primaryImage: 'https://p3-search.byteimg.com/img/labis/dc6a1c5edd406db92604a8165bb92f5f~480x480.JPEG',
+    SalePrice: '900',
+    isSoldOut: false,
+    isPutOnSale: 1,
+    description: [
+      'https://p3-search.byteimg.com/img/labis/aa8c6608035c8cc2b028bacda94bf164~480x480.JPEG',
+      'https://p3-search.byteimg.com/img/labis/305a341b9021e57d843f7ffc28b3680b~480x480.JPEG',
+    ],
+  },
+  {
+    uid: '111111111',
+    spuId: '241120005',
+    categoryId: '102',
+
+    title: '桌面收纳盒 木质',
+    primaryImage: 'https://p3-search.byteimg.com/img/labis/d14956f5e96f4ac442701b1f32c68069~480x480.JPEG',
+    SalePrice: '1900',
+    isSoldOut: false,
+    isPutOnSale: 1,
+    description: [
+      'https://p3-search.byteimg.com/img/labis/d6719e528facf6f67a56d679302f8e9a~480x480.JPEG',
+      'https://p3-search.byteimg.com/img/labis/604fb5c1cdb01bedc0c71f3212bb8009~480x480.JPEG',
+    ],
+  },
+  {
+    uid: '121212121',
+    spuId: '241120006',
+    categoryId: '402',
+
+    title: 'iPhone 13 128G 粉色 95新',
+    primaryImage: 'https://p3-search.byteimg.com/img/tos-cn-i-qvj2lq49k0/5ddafae36aa2418f8360dde0533f108b~480x480.jpeg',
+    SalePrice: '99900',
+    isSoldOut: false,
+    isPutOnSale: 1,
+    description: [
+      'https://p3-search.byteimg.com/img/pgc-image/e1d7492e94ee4b81ad01447eedd7b602~480x480.JPEG',
+      'https://p3-search.byteimg.com/img/tos-cn-i-qvj2lq49k0/77b955f881c4447a88f3bc035208e40c~480x480.jpeg',
+    ],
+  },
+  {
+    uid: '131313131',
+    spuId: '241120007',
+    categoryId: '403',
+
+    title: 'iPad Pro 2022 256G WIFI版',
+    primaryImage: 'https://p3-search.byteimg.com/img/tos-cn-i-qvj2lq49k0/30ff5eeb5ff14a85b22b6c0072b33e4a~480x480.jpeg',
+    SalePrice: '259900',
+    isSoldOut: false,
+    isPutOnSale: 1,
+    description: [
+      'https://p3-search.byteimg.com/img/tos-cn-i-qvj2lq49k0/d72ddab2072b4c0781332fc36bebfff6~480x480.png',
+      'https://p3-search.byteimg.com/img/labis/5ba436c86cdab4af5add43ed5b583fc4~480x480.JPEG',
+    ],
+  },
+  {
+    uid: '141414141',
+    spuId: '241120008',
+    categoryId: '202',
+
+    title: '男士休闲夹克 黑色 全新',
+    primaryImage: 'https://p3-search.byteimg.com/img/labis/056985a0f663bccc8205f8cc909ce346~480x480.JPEG',
+    SalePrice: '4900',
+    isSoldOut: false,
+    isPutOnSale: 1,
+    description: [
+      'https://p3-search.byteimg.com/img/labis/85cd52518146600c25d642e2a3edbec4~480x480.JPEG',
+      'https://p3-search.byteimg.com/img/labis/056985a0f663bccc8205f8cc909ce346~480x480.JPEG',
+    ],
+  }
 ];
 
 
 
 //从现有商品数据中查找或根据一定规则创建新的商品信息，因为是模拟数据，所以有重复
 export function genGood(id) {
-  const item = allGoods[id % allGoods.length]; //从allGoods数组中根据id取模得到一个商品
-  return { //创建一个新的对象
+  // 如果id是字符串，按spuId查找商品
+  if (typeof id === 'string') {
+    const item = allGoods.find(good => good.spuId === id);
+    if (item) {
+      return {
+        ...item,
+        description: item?.description || defaultDesc,
+        images: item.description?.[0] || item.primaryImage,
+        primaryImage: item.primaryImage,
+      };
+    }
+  }
+  
+  // 如果id是数字，返回单个商品
+  if (typeof id === 'number') {
+    const item = allGoods[id % allGoods.length];
+    return {
+      ...item,
+      description: item?.description || defaultDesc,
+      images: item.description?.[0] || item.primaryImage,
+      primaryImage: item.primaryImage,
+    };
+  }
+  
+  // 如果没有传id，返回所有商品
+  return allGoods.map(item => ({
     ...item,
-    spuId: `${id}`,
     description: item?.description || defaultDesc,
-    images: item.primaryImage,
-  };
+    images: item.description?.[0] || item.primaryImage,
+    primaryImage: item.primaryImage,
+  }));
 }

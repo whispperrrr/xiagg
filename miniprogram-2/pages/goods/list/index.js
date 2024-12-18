@@ -55,60 +55,59 @@ Page({
     return params;
   }, //generalQueryData
 
-  init: async function (reset = true) { //初始化数据，包括获取商品列表和筛选商品列表
-    const {
-      loadMoreStatus
-    } = this.data;
+  init: async function (reset = true) {
+    const { loadMoreStatus } = this.data;
     const params = this.generalQueryData(reset);
+    
     if (loadMoreStatus !== 0) return;
+    
     this.setData({
       loadMoreStatus: 1,
       loading: true,
     });
-    try {
-      const result = await fetchGoodsList(params); //调用获取商品列表的方法
-      const code = 'Success';
-      const data = result;
-      if (code.toUpperCase() === 'SUCCESS') {
-        const {
-          spuList,
-          totalCount = 0
-        } = data; //从data对象中提取spuList和totalCount属性
-        if (totalCount === 0) { //没有数据，直接返回
-          this.total = totalCount;
-          this.setData({
-            hasLoaded: true,
-            loadMoreStatus: 0,
-            loading: false,
-            goodsList: [],
-          });
-          return;
-        }
 
-        const _goodsList = reset ? spuList : this.data.goodsList.concat(spuList);
-        const _loadMoreStatus = _goodsList.length === totalCount ? 2 : 0;
-        this.pageNum = params.pageNum || 1;
+    try {
+      const result = await fetchGoodsList(params);
+      const { spuList, totalCount = 0 } = result;
+
+      if (totalCount === 0) {
         this.total = totalCount;
         this.setData({
-          goodsList: _goodsList,
-          loadMoreStatus: _loadMoreStatus,
-        });
-
-        //在这里调用筛选方法
-        this.filterGoodsByCategory(this.data.categoryId);
-      } else {
-        this.setData({
+          hasLoaded: true,
+          loadMoreStatus: 0,
           loading: false,
+          goodsList: [],
+          filteredGoodsList: [],
         });
-        wx.showToast({
-          title: '查询失败，请稍候重试',
-        });
+        return;
       }
+
+      const _goodsList = reset ? spuList : this.data.goodsList.concat(spuList);
+      const _loadMoreStatus = _goodsList.length === totalCount ? 2 : 0;
+      
+      this.pageNum = params.pageNum || 1;
+      this.total = totalCount;
+      
+      this.setData({
+        goodsList: _goodsList,
+        loadMoreStatus: _loadMoreStatus,
+      });
+
+      // 根据分类ID筛选商品
+      this.filterGoodsByCategory(this.data.categoryId);
+
     } catch (error) {
+      console.error('加载商品列表失败:', error);
       this.setData({
         loading: false,
+        loadMoreStatus: 0,
+      });
+      wx.showToast({
+        title: '加载失败，请重试',
+        icon: 'none'
       });
     }
+
     this.setData({
       hasLoaded: true,
       loading: false,
@@ -141,7 +140,7 @@ Page({
     this.init(false);
   },
 
-  filterGoodsByCategory: function (categoryId) { //根据categoryId筛选商品
+  filterGoodsByCategory: function (categoryId) {
     if (!categoryId) {
       // 如果没有选择分类，则显示所有商品
       this.setData({

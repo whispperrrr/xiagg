@@ -8,23 +8,47 @@ function mockFetchGoodsList(params) {
     delay
   } = require('../_utils/delay');
   const {
-    getSearchResult
-  } = require('../../model/search');
+    genGood
+  } = require('../../model/good');
 
-  const data = getSearchResult(params);
+  // 获取所有商品数据
+  const allGoods = genGood();
+  
+  // 根据分类ID筛选商品
+  let filteredGoods = allGoods;
+  if (params.categoryId) {
+    filteredGoods = allGoods.filter(item => item.categoryId === params.categoryId);
+  }
+
+  // 根据关键词筛选商品
+  if (params.keyword) {
+    const keyword = params.keyword.toLowerCase();
+    filteredGoods = filteredGoods.filter(item => 
+      item.title.toLowerCase().includes(keyword)
+    );
+  }
+
+  // 分页处理
+  const startIndex = (params.pageNum - 1) * params.pageSize;
+  const endIndex = startIndex + params.pageSize;
+  const spuList = filteredGoods.slice(startIndex, endIndex);
+
+  const data = {
+    spuList,
+    totalCount: filteredGoods.length,
+    pageNum: params.pageNum,
+    pageSize: params.pageSize
+  };
 
   if (data.spuList.length) {
-    data.spuList.forEach((item) => { //forEach对数组中的每一个元素执行一次给定的函数
-      item.spuId = item.spuId;
+    data.spuList.forEach((item) => {
       item.thumb = item.primaryImage;
-      item.title = item.title;
       item.price = item.SalePrice;
       item.desc = '';
     });
   }
-  return delay().then(() => {
-    return data;
-  });
+
+  return delay().then(() => data);
 }
 
 //获取商品列表

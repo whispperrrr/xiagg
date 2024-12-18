@@ -2,10 +2,10 @@
 	<block wx:if="{{goodsList.length > 0}}">
 		<view class="goods-list">
 			<view class="goods-item" wx:for="{{goodsList}}" wx:key="spuId">
-				<image class="goods-image" src="{{item.primaryImage}}" mode="aspectFill" bindtap="gotoGoodDetail" data-index="{{index}}"/>
+				<image class="goods-image" src="{{item.primaryImage}}" mode="aspectFill" bindtap="gotoGoodDetail" data-index="{{index}}" />
 				<view class="goods-info">
 					<view class="goods-title">{{item.title}}</view>
-					<view class="goods-price">¥{{item.price}}</view>
+					<view class="goods-price">¥{{item.price/100}}</view>
 				</view>
 				<view class="delete-btn" bindtap="deleteGoods" data-index="{{index}}">
 					<image src="/images1/icon/delete.png" class="delete-icon"></image>
