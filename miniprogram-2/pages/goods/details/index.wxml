@@ -3,7 +3,12 @@
   <view class="goods-head">
 
     <!-- 首图 -->
-    <image src="{{details.images}}" class="primaryImage"/>
+    <image 
+      class="primaryImage" 
+      src="{{primaryImage}}" 
+      mode="aspectFill"
+      bindtap="previewImage"
+    />
 
     <!-- 价格/标题/分享 -->
     <view class="goods-info">

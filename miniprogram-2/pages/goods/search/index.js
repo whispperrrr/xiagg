@@ -1,12 +1,12 @@
-import {
-  getSearchHistory,
-  getSearchPopular,
-} from '../../../services/good/fetchSearchHistory';
-
 Page({
   data: {
     searchValue: '',
     historyWords: [],
+    dialogShow: false,
+    dialog: {
+      message: '',
+      showCancelButton: false
+    }
   },
 
   onLoad() {
@@ -74,7 +74,27 @@ Page({
     if (keyword) {
       this.saveHistoryWords(keyword);
       this.goToSearchResult(keyword);
+    } else {
+      this.setData({
+        dialogShow: true,
+        dialog: {
+          message: '请输入搜索关键词',
+          showCancelButton: false
+        }
+      });
     }
+  },
+
+  close() {
+    this.setData({
+      dialogShow: false
+    });
+  },
+
+  confirm() {
+    this.setData({
+      dialogShow: false
+    });
   },
 
   goToSearchResult(keyword) {

@@ -4,7 +4,7 @@ page {
 }
 
 .primaryImage{
-  height: 750rpx;
+  height: 100vw;
   width: 100%;
 }
 
@@ -24,10 +24,8 @@ page {
   align-items: baseline;
 }
 
-
 .goods-detail-page .goods-info .goods-price .class-goods-price {
   font-family: DIN Alternate;
-
   font-size: 120rpx;
   font-weight: 700;
   color: rgba(227, 23, 23, 1);
@@ -144,7 +142,6 @@ page {
   color: #333333;
   line-height: 40rpx;
 }
-
 
 /* 下方 */
 .goods-detail-page .desc-content {

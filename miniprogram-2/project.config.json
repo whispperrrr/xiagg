@@ -88,12 +88,6 @@
           "scene": null
         },
         {
-          "name": "示例页-搜索结果",
-          "pathName": "pages/goods/result/index",
-          "query": "",
-          "scene": null
-        },
-        {
           "name": "示例页-商品评价",
           "pathName": "pages/goods/comments/create/index",
           "query": "",

@@ -18,7 +18,6 @@
   </view>
 
   <view class="search-wrap">
-
     <view class="history-wrap">
       <view class="search-header">
         <text class="search-title">历史搜索</text>
@@ -38,7 +37,6 @@
         </view>
       </view>
     </view>
-
   </view>
 
   <t-dialog

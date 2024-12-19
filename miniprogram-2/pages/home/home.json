@@ -1,12 +1,12 @@
 {
   "navigationBarTitleText": "首页",
   "onReachBottomDistance": 10,
-  "backgroundTextStyle": "light",
+  "backgroundTextStyle": "dark",
   "enablePullDownRefresh": true,
+  
   "usingComponents": {
     "t-loading": "tdesign-miniprogram/loading/loading",
     "t-sticky": "tdesign-miniprogram/sticky/sticky",
-    
     "goods-list": "/components/goods-list/index",
     "load-more": "/components/load-more/index"
   }

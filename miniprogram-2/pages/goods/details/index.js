@@ -190,4 +190,14 @@ Page({
       url: `/pages/goods/comments/index?spuId=${this.data.spuId}`,
     });
   },
+
+  // 预览图片
+  previewImage() {
+    if (this.data.primaryImage) {
+      wx.previewImage({
+        current: this.data.primaryImage,
+        urls: [this.data.primaryImage]
+      });
+    }
+  },
 });
