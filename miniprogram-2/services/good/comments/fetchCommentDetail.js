@@ -1,20 +1,13 @@
 import { config } from '../../../config/index';
-import { queryCommentDetail } from '../../../model/comments/queryDetail';
 /** 获取商品评价数据 */
-function mockQueryCommentDetail(params) {
-  const { delay } = require('../../_utils/delay');
-  const data = queryCommentDetail(params);
-  return delay().then(() => {
-    return data;
-  });
-}
-
-/** 获取评价详情 */
-export function getCommentDetail(params) {
-  if (config.useMock) {
-    return mockQueryCommentDetail(params);
-  }
+export function fetchCommentDetail() {
   return new Promise((resolve) => {
-    resolve('real api');
+    resolve({
+      commentScore: 5,
+      commentContent: '商品很好',
+      commentTime: '2023-12-18',
+      userAvatar: '/images/avatar.png',
+      userName: '用户123'
+    });
   });
 }

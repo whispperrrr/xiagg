@@ -183,5 +183,11 @@ Page({
         duration: 2000
       });
     }
-  }
+  },
+
+  navToCommentsListPage() {
+    wx.navigateTo({
+      url: `/pages/goods/comments/index?spuId=${this.data.spuId}`,
+    });
+  },
 });
