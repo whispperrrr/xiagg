@@ -1,6 +1,23 @@
 <!--pages/usercenter/mybrought/index.wxml-->
 <view class="browse-history">
-  <view class="empty-state">
-    <view class="empty-text">您还没有浏览记录哦~</view>
+  <block wx:if="{{browseList && browseList.length > 0}}">
+    <view class="browse-list">
+      <view class="browse-item" wx:for="{{browseList}}" wx:key="index">
+        <view class="item-content" bindtap="goToDetail" data-id="{{item.id}}">
+          <image class="item-image" src="{{item.image}}" mode="aspectFill"></image>
+          <view class="item-info">
+            <view class="item-title">{{item.title}}</view>
+            <view class="item-price">¥{{item.price/100}}</view>
+            <view class="item-time">{{item.browseTime}}</view>
+          </view>
+        </view>
+        <view class="delete-btn" catchtap="deleteRecord" data-index="{{index}}">
+          <image class="delete-icon" src="/images1/icon/delete.png"></image>
+        </view>
+      </view>
+    </view>
+  </block>
+  <view class="empty-state" wx:else>
+    您还没有浏览记录哦~
   </view>
 </view>

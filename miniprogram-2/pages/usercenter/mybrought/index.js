@@ -26,7 +26,8 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow() {
-
+    // 每次显示页面时刷新浏览记录
+    this.getBrowseHistory()
   },
 
   /**
@@ -71,6 +72,38 @@ Page({
     const browseHistory = wx.getStorageSync('browseHistory') || []
     this.setData({
       browseList: browseHistory
+    })
+  },
+
+  // 删除浏览记录
+  deleteRecord: function(e) {
+    const index = e.currentTarget.dataset.index
+    wx.showModal({
+      title: '提示',
+      content: '确定要删除这条浏览记录吗？',
+      success: res => {
+        if (res.confirm) {
+          const browseHistory = wx.getStorageSync('browseHistory') || []
+          browseHistory.splice(index, 1)
+          wx.setStorageSync('browseHistory', browseHistory)
+          this.setData({
+            browseList: browseHistory
+          })
+          wx.showToast({
+            title: '删除成功',
+            icon: 'success',
+            duration: 2000
+          })
+        }
+      }
+    })
+  },
+
+  // 跳转到商品详情
+  goToDetail(e) {
+    const id = e.currentTarget.dataset.id
+    wx.navigateTo({
+      url: `/pages/goods/details/index?spuId=${id}`
     })
   }
 })

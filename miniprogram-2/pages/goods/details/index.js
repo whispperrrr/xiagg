@@ -36,6 +36,38 @@ Page({
     spuId: '',
   },
 
+  // 添加浏览记录
+  addBrowseRecord() {
+    try {
+      const browseHistory = wx.getStorageSync('browseHistory') || []
+      const record = {
+        id: this.data.spuId,
+        title: this.data.details.title,
+        image: this.data.primaryImage,
+        browseTime: new Date().toLocaleString(),
+        price: this.data.SalePrice
+      }
+      
+      // 避免重复记录，如果已存在则更新时间
+      const index = browseHistory.findIndex(h => h.id === record.id)
+      if (index > -1) {
+        browseHistory.splice(index, 1)
+      }
+      
+      // 将新记录添加到开头
+      browseHistory.unshift(record)
+      
+      // 限制记录数量，最多保存50条
+      if (browseHistory.length > 50) {
+        browseHistory.pop()
+      }
+      
+      wx.setStorageSync('browseHistory', browseHistory)
+    } catch (error) {
+      console.error('保存浏览记录失败:', error)
+    }
+  },
+
   //根据spuId获取对应的商品详情到details数组里
   getDetail(spuId) {
     Promise.all([fetchGood(spuId)]).then((res) => {
@@ -51,6 +83,8 @@ Page({
         primaryImage,
         soldout: isPutOnSale === 0,
       });
+      // 在获取商品详情后记录浏览历史
+      this.addBrowseRecord();
     });
   },
 
@@ -198,6 +232,13 @@ Page({
         current: this.data.primaryImage,
         urls: [this.data.primaryImage]
       });
+    }
+  },
+
+  onShow() {
+    // 每次页面显示时也记录浏览历史
+    if (this.data.spuId && this.data.details.title) {
+      this.addBrowseRecord();
     }
   },
 });
