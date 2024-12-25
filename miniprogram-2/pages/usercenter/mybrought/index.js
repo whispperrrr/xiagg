@@ -5,14 +5,14 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    browseList: [] // 浏览记录列表
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
-
+    this.getBrowseHistory()
   },
 
   /**
@@ -47,14 +47,15 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh() {
-
+    this.getBrowseHistory()
+    wx.stopPullDownRefresh()
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
   onReachBottom() {
-
+    // 如果需要分页加载更多数据，可以在这里处理
   },
 
   /**
@@ -62,5 +63,14 @@ Page({
    */
   onShareAppMessage() {
 
+  },
+
+  // 获取浏览记录
+  getBrowseHistory: function() {
+    // 这里可以从本地存储或服务器获取浏览记录
+    const browseHistory = wx.getStorageSync('browseHistory') || []
+    this.setData({
+      browseList: browseHistory
+    })
   }
 })

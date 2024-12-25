@@ -1,1 +1,19 @@
 /* pages/usercenter/mybrought/index.wxss */
+/* 浏览记录页面样式 */
+.browse-history {
+  padding: 20rpx;
+}
+
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-top: 200rpx;
+}
+
+.empty-text {
+  font-size: 28rpx;
+  color: #999;
+  text-align: center;
+}

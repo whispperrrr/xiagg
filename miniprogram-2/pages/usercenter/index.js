@@ -49,7 +49,7 @@ const orderTagInfos = [
     status: 1,
   },
   {
-    title: '我买到的',
+    title: '浏览记录',
     iconName: 'package',
     orderNum: 0,
     tabType: 40,
